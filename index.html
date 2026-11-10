@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ОКФ — подготовка к КР</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Lora:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="katex/katex.min.css">
+<script src="katex/katex.min.js"></script>
+<script src="katex/auto-render.min.js"></script>
+<style>
+:root{
+  --bg:#f6f3ec; --paper:#fffdf8; --ink:#1d2433; --ink2:#4a5468; --muted:#8a8f9c;
+  --line:#e3ddd0; --accent:#c2412d; --accent-soft:#f7e3dc; --blue:#2b4c7e; --blue-soft:#e4ebf5;
+  --green:#2f7a4d; --green-soft:#e1f1e6; --red:#b3261e; --red-soft:#fbe4e2; --amber:#9a6b00; --amber-soft:#fbf0d4;
+  --r:10px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Golos Text",system-ui,sans-serif;font-size:16px;line-height:1.55}
+a{color:var(--blue)}
+h1,h2,h3{font-family:Lora,Georgia,serif;line-height:1.25;margin:0 0 .5em}
+h1{font-size:2rem} h2{font-size:1.5rem;margin-top:.2em} h3{font-size:1.15rem;margin-top:1.2em}
+code,.mono{font-family:"JetBrains Mono",monospace;font-size:.92em}
+header{position:sticky;top:0;z-index:10;background:var(--ink);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.hwrap{max-width:1180px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.logo{font-family:Lora,serif;font-weight:700;font-size:1.15rem;white-space:nowrap}
+.logo span{color:#ff9b85}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{color:#cfd6e4;text-decoration:none;padding:6px 11px;border-radius:7px;font-size:.93rem;font-weight:500}
+nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+nav a.on{background:var(--accent);color:#fff}
+main{max-width:1180px;margin:0 auto;padding:26px 18px 80px}
+section.view{display:none} section.view.on{display:block}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:0 0 16px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.lead{font-size:1.07rem;color:var(--ink2);max-width:780px}
+.pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:.78rem;font-weight:600;background:var(--blue-soft);color:var(--blue);margin-right:6px}
+.pill.red{background:var(--accent-soft);color:var(--accent)}
+.pill.green{background:var(--green-soft);color:var(--green)}
+.pill.amber{background:var(--amber-soft);color:var(--amber)}
+.stat{font-family:Lora,serif;font-size:2.2rem;font-weight:700;color:var(--accent);line-height:1}
+.stat small{font-size:.9rem;color:var(--ink2);font-family:"Golos Text";font-weight:500;display:block;margin-top:6px}
+ul.clean{list-style:none;padding:0;margin:0} ul.clean li{padding:5px 0;border-bottom:1px dashed var(--line)} ul.clean li:last-child{border:0}
+.ok::before{content:"✓ ";color:var(--green);font-weight:700}
+.no::before{content:"✕ ";color:var(--red);font-weight:700}
+.note{border-left:4px solid var(--amber);background:var(--amber-soft);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:.95rem}
+.note.blue{border-color:var(--blue);background:var(--blue-soft)}
+.note.red{border-color:var(--red);background:var(--red-soft)}
+table{border-collapse:collapse;width:100%;font-size:.93rem;margin:8px 0}
+th,td{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#f1ece1;font-weight:600}
+.tl{display:flex;height:34px;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem;font-weight:600;color:#fff}
+.tl div{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden}
+/* formula */
+.f{font-family:"JetBrains Mono",monospace;font-size:.95rem;background:#f3efe6;border:1px solid var(--line);border-radius:7px;padding:6px 11px;display:inline-block;line-height:2.1;margin:3px 2px 3px 0}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 3px;line-height:1.3}
+.fr>span:first-child{border-bottom:1.5px solid var(--ink);padding:0 3px 1px}
+.fr>span:last-child{padding:1px 3px 0}
+/* accordion */
+details.acc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px}
+details.acc>summary{cursor:pointer;padding:14px 18px;font-weight:600;font-size:1.05rem;list-style:none;display:flex;align-items:center;gap:10px}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary::before{content:"▸";color:var(--accent);transition:transform .15s}
+details.acc[open]>summary::before{transform:rotate(90deg)}
+details.acc>div{padding:0 22px 18px}
+.num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:.8rem;flex:none}
+/* buttons, inputs */
+button,.btn{font:inherit;font-weight:600;border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:8px;padding:8px 15px;cursor:pointer}
+button.ghost{background:transparent;color:var(--ink)}
+button.acc2{background:var(--accent);border-color:var(--accent)}
+button:hover{filter:brightness(1.1)}
+button.small{padding:5px 10px;font-size:.85rem}
+input,select{font:inherit;border:1px solid #cfc7b6;border-radius:8px;padding:7px 10px;background:#fff;color:var(--ink)}
+input:focus,select:focus{outline:2px solid var(--blue);outline-offset:1px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.fld{display:flex;flex-direction:column;gap:3px;font-size:.85rem;color:var(--ink2)}
+.fld input,.fld select{width:150px}
+/* quiz */
+.q{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;margin-bottom:12px}
+.q .qt{font-weight:600;margin-bottom:10px}
+.opt{display:block;width:100%;text-align:left;background:#fff;color:var(--ink);border:1px solid #d8d0bf;margin:6px 0;font-weight:500;padding:9px 13px}
+.opt:hover{background:#faf6ee;filter:none}
+.opt.right{background:var(--green-soft);border-color:var(--green)}
+.opt.wrong{background:var(--red-soft);border-color:var(--red)}
+.expl{display:none;margin-top:8px;font-size:.93rem;color:var(--ink2);background:#f6f2ea;border-radius:8px;padding:9px 12px}
+.q.done .expl{display:block}
+.score{position:sticky;top:64px;z-index:5;background:var(--ink);color:#fff;border-radius:10px;padding:10px 16px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.score b{font-size:1.2rem;color:#ffb3a3}
+/* tasks */
+.task{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 22px;margin-bottom:14px}
+.task h3{margin-top:0}
+.sol{display:none;margin-top:12px;border-top:1px dashed var(--line);padding-top:12px}
+.task.open .sol{display:block}
+.steps{counter-reset:s;padding-left:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding:4px 0 6px 34px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:5px;width:22px;height:22px;border-radius:50%;background:var(--blue-soft);color:var(--blue);font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.ans{font-weight:700;color:var(--green)}
+.fb{font-weight:600;font-size:.92rem}
+.fb.good{color:var(--green)} .fb.bad{color:var(--red)}
+.filter{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+.filter button{background:#fff;color:var(--ink);border-color:#d8d0bf;font-weight:500;padding:5px 12px;font-size:.88rem}
+.filter button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+/* cheat */
+.cheat{background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px 18px;columns:2;column-gap:22px;font-size:.84rem;line-height:1.42}
+.cheat h4{font-family:Lora,serif;margin:.6em 0 .25em;color:var(--accent);font-size:.95rem;break-after:avoid}
+.cheat div.b{break-inside:avoid;margin-bottom:4px}
+.cheat .f{font-size:.8rem;padding:1px 7px;margin:1px 0;line-height:1.8}
+.check{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
+.check input{width:18px;height:18px;margin-top:3px;flex:none}
+.bar{height:10px;background:#e9e3d6;border-radius:99px;overflow:hidden}
+.bar>div{height:100%;background:var(--green);width:0;transition:width .3s}
+.res{font-family:"JetBrains Mono",monospace;font-size:1.05rem;font-weight:600;color:var(--blue);margin-top:10px;white-space:pre-wrap}
+.kbd{font-family:"JetBrains Mono";background:#fff;border:1px solid #cfc7b6;border-bottom-width:2px;border-radius:5px;padding:0 5px;font-size:.85em}
+
+.katex{font-size:1.08em}
+.katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:4px 0}
+td.ftd{padding:9px 9px}
+.sheets{display:flex;flex-direction:column;align-items:center;gap:24px}
+.sheet{background:#fff;width:100%;max-width:820px;min-height:1160px;box-shadow:0 2px 14px rgba(0,0,0,.08);border:1px solid var(--line);padding:22px 26px;font-size:.86rem;line-height:1.4}
+.sheet-h{font-family:Lora,serif;font-weight:700;color:var(--ink);border-bottom:2px solid var(--accent);padding-bottom:4px;margin-bottom:6px;font-size:1rem}
+.sheet-b{columns:2;column-gap:20px}
+.sheet h4{font-family:Lora,serif;margin:.55em 0 .2em;color:var(--accent);font-size:.9rem;break-after:avoid}
+.sheet div.b{break-inside:avoid;margin-bottom:5px}
+.sheet:first-child div.b{margin-bottom:9px}
+.sheet:first-child .katex{font-size:1.12em}
+.sheet .katex{font-size:1em}
+.sheet table.mini{font-size:.92em;margin:2px 0}.sheet table.mini td,.sheet table.mini th{padding:2px 4px}
+.intro{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));background:#f4f8f5;border:1px solid #d5e6da;border-radius:10px;padding:14px 16px;margin:4px 0 6px}
+.intro>div{font-size:.95rem}
+.itag{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--green);margin-bottom:3px}
+.itag.kr{color:var(--accent)}
+h3.more{border-top:1px dashed var(--line);padding-top:12px}
+footer{max-width:1180px;margin:0 auto;padding:0 18px 40px;color:var(--muted);font-size:.85rem}
+@media (max-width:700px){.cheat{columns:1} h1{font-size:1.6rem} .score{top:110px}}
+@media print{@page{size:A4;margin:8mm} header,footer,.noprint{display:none!important} body{background:#fff} section.view{display:none!important} #v-cheatsheet{display:block!important} main{padding:0;max-width:none} .sheets{gap:0} .sheet{box-shadow:none;border:0;min-height:0;max-width:none;padding:0;font-size:8.8pt;break-after:page}}
+</style>
+</head>
+<body>
+<header><div class="hwrap">
+  <div class="logo">ОКФ<span>·</span>КР</div>
+  <nav id="nav">
+    <a href="#home" data-v="home">Старт</a>
+    <a href="#theory" data-v="theory">Теория</a>
+    <a href="#formulas" data-v="formulas">Формулы</a>
+    <a href="#glossary" data-v="glossary">Словарь</a>
+    <a href="#cheatsheet" data-v="cheatsheet">Чек-лист А4</a>
+    <a href="#quiz" data-v="quiz">Тест</a>
+    <a href="#tasks" data-v="tasks">Задачи</a>
+    <a href="#trainer" data-v="trainer">Тренажёр</a>
+    <a href="#calc" data-v="calc">Калькуляторы</a>
+  </nav>
+</div></header>
+
+<main>
+<!-- ======================= HOME ======================= -->
+<section class="view" id="v-home">
+  <h1>Основы корпоративных финансов — подготовка к контрольной</h1>
+  <p class="lead">Всё по 12 темам КР в одном месте: краткая теория, формулы, тест в формате КР, разобранные задачи из образца и списка «задачи к КР», тренажёр со случайными числами и калькуляторы для самопроверки.</p>
+
+  <div class="grid g3" style="margin:20px 0">
+    <div class="card"><div class="stat">80 мин<small>продолжительность</small></div></div>
+    <div class="card"><div class="stat">12<small>вопросов с выбором ответа (обвести)</small></div></div>
+    <div class="card"><div class="stat">7<small>расчётных задач</small></div></div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h2>Правила на КР</h2>
+      <h3 style="margin-top:.3em">Можно</h3>
+      <ul class="clean">
+        <li class="ok">Черновик</li>
+        <li class="ok"><b>Чек-лист — 1 лист А4 от руки, можно с двух сторон</b> (шаблон во вкладке «Чек-лист А4»)</li>
+        <li class="ok">Калькулятор</li>
+        <li class="ok">Напиток с закрывающейся крышкой</li>
+      </ul>
+      <h3>Нельзя</h3>
+      <ul class="clean">
+        <li class="no">Мобильный телефон</li>
+        <li class="no">Другие электронные устройства (кроме калькулятора и компьютера в классе)</li>
+        <li class="no">Вещи — на подоконник или стулья в углу</li>
+        <li class="no">Любые устройства при себе во время теста, кроме калькулятора</li>
+      </ul>
+      <div class="note"><b>Проверь калькулятор заранее:</b> нужна степень <span class="kbd">xʸ</span>, логарифм <span class="kbd">ln</span> и <span class="kbd">eˣ</span>. Финансовые функции не нужны — все задачи решаются формулами.</div>
+    </div>
+
+    <div class="card">
+      <h2>Тайминг на 80 минут</h2>
+      <div class="tl">
+        <div style="width:19%;background:var(--blue)">вопросы 15′</div>
+        <div style="width:69%;background:var(--accent)">7 задач ≈ 55′ (≈8′ на задачу)</div>
+        <div style="width:12%;background:var(--green)">10′</div>
+      </div>
+      <ol>
+        <li><b>Сначала 12 вопросов</b> — это быстрые баллы, ~1 минута на вопрос. Сомневаешься — пометь и вернись.</li>
+        <li><b>Задачи — от простых к сложным:</b> DSO, Дюпон, FV/PV обычно на 2–3 минуты; ипотека, отсроченная рента, остаток долга — дольше.</li>
+        <li>В каждой задаче пиши: <i>Дано → Найти → формула → подстановка → ответ с единицами</i>. Даже при ошибке в арифметике метод засчитывается легче.</li>
+        <li>Последние 10 минут — проверка: ставка за период совпадает с периодом платежа? Начало или конец периода?</li>
+      </ol>
+      <div class="note blue">В образце КР задачи 3 и 5 одинаковые — на реальной КР, скорее всего, будет 7 разных задач тех же типов.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>С чего начать</h2>
+    <div class="grid g2">
+      <div class="card" style="margin:0;background:#fff">
+        <span class="pill green">Не был на лекциях / с нуля</span>
+        <ol style="margin-bottom:0">
+          <li>Открой <a href="#theory">«Теорию»</a> и по каждой теме прочитай только блок «Простыми словами» с примером — это ~30 минут на все 12 тем.</li>
+          <li>Держи открытым <a href="#glossary">«Словарь»</a>: там все EBIT, ROE, PMT и прочее с переводом.</li>
+          <li>Темы 9–12 (проценты, TVM, аннуитеты, рост) — основа почти всех задач. Разбери их первыми, потом «Подробно».</li>
+          <li>В <a href="#tasks">«Задачах»</a> сначала открой решение, разберись, потом реши такую же задачу в <a href="#trainer">«Тренажёре»</a> сам.</li>
+          <li>Перепиши <a href="#cheatsheet">чек-лист</a> от руки, затем пройди <a href="#quiz">тест</a> по темам 1–8.</li>
+        </ol>
+      </div>
+      <div class="card" style="margin:0;background:#fff">
+        <span class="pill">Ходил на лекции / уже знаешь</span>
+        <ol style="margin-bottom:0">
+          <li>Сразу <a href="#quiz">режим «КР»</a> — 12 вопросов на время. Ошибся — открой эту тему в теории.</li>
+          <li>Реши все <a href="#tasks">задачи из образца и списка к КР</a> без подсказок, сверь ответы.</li>
+          <li>Отдельно прочитай пометки про спорные решения из файла с примерами (Petry, ипотека).</li>
+          <li><a href="#trainer">Тренажёр</a> в режиме «Любой тип», пока не будет 10 из 10 подряд.</li>
+          <li>Перепиши <a href="#cheatsheet">чек-лист</a> — раздел «Ловушки» особенно.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>План подготовки и прогресс</h2>
+    <p style="color:var(--ink2);margin-top:-4px">Отмечай темы, которые уверенно знаешь. Отметки сохраняются в этом браузере.</p>
+    <div class="bar"><div id="progbar"></div></div>
+    <p id="progtxt" style="font-size:.9rem;color:var(--ink2)"></p>
+    <div class="grid g2" id="checklist"></div>
+  </div>
+
+  <div class="card">
+    <h2>Как пользоваться сайтом эффективно</h2>
+    <div class="grid g3">
+      <div><span class="pill">1</span><b>Теория + формулы</b><br><span style="color:var(--ink2)">Прочитай тему, сразу реши 2–3 тестовых вопроса по ней (фильтр по теме во вкладке «Тест»).</span></div>
+      <div><span class="pill">2</span><b>Задачи из образца</b><br><span style="color:var(--ink2)">Сначала реши сам на бумаге, введи ответ — сайт проверит. Потом открой решение.</span></div>
+      <div><span class="pill">3</span><b>Тренажёр</b><br><span style="color:var(--ink2)">Те же типы задач со случайными числами — гоняй, пока не будет 10 из 10.</span></div>
+      <div><span class="pill">4</span><b>Чек-лист А4</b><br><span style="color:var(--ink2)">Перепиши шаблон от руки. Писать самому — тоже подготовка.</span></div>
+      <div><span class="pill">5</span><b>Режим «КР»</b><br><span style="color:var(--ink2)">12 случайных вопросов на время — генеральная репетиция.</span></div>
+      <div><span class="pill">6</span><b>Калькуляторы</b><br><span style="color:var(--ink2)">Только для проверки своих решений — на КР их не будет.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= THEORY ======================= -->
+<section class="view" id="v-theory">
+  <h1>Теория по темам КР</h1>
+  <p class="lead">Каждая тема начинается с блока «простыми словами» с примером и списком того, что спросят на КР, а дальше идёт подробный конспект по лекциям 1–7 и семинарам 1–3. Непонятное сокращение ищи во вкладке <a href="#glossary">«Словарь»</a>.</p>
+  <div class="row noprint" style="margin-bottom:12px"><button class="ghost small" onclick="toggleAll(true)">Раскрыть все</button><button class="ghost small" onclick="toggleAll(false)">Свернуть все</button></div>
+  <div id="theoryList"></div>
+</section>
+
+<!-- ======================= FORMULAS ======================= -->
+<section class="view" id="v-formulas">
+  <h1>Формулы</h1>
+  <p class="lead">Полный справочник. Обозначения: <code>r</code> — ставка за период, <code>n</code> — число периодов, <code>m</code> — число начислений в году, <code>g</code> — темп роста, <code>T</code> — ставка налога.</p>
+  <div id="formulaList"></div>
+</section>
+
+<!-- ======================= GLOSSARY ======================= -->
+<section class="view" id="v-glossary">
+  <h1>Словарь сокращений и терминов</h1>
+  <p class="lead">Все аббревиатуры, которые встречаются в лекциях, задачах и на этом сайте. Задачи на КР часто дают термины на английском — здесь перевод и смысл.</p>
+  <div class="card"><input id="glQ" placeholder="Поиск: например, EBIT или дебиторка" style="width:100%;max-width:420px" oninput="renderGloss()"><div id="glList" style="margin-top:10px"></div></div>
+</section>
+
+<!-- ======================= CHEATSHEET ======================= -->
+<section class="view" id="v-cheatsheet">
+  <h1 class="noprint">Чек-лист на 1 лист А4</h1>
+  <p class="lead noprint">Шаблон того, что стоит переписать <b>от руки</b> на разрешённый лист (обе стороны). Сторона 1 — все формулы, сторона 2 — алгоритмы типовых задач и ключевые слова теории для 12 вопросов. Ctrl+P распечатает только этот блок (как образец для переписывания).</p>
+  <div class="sheets" id="cheat"></div>
+</section>
+
+<!-- ======================= QUIZ ======================= -->
+<section class="view" id="v-quiz">
+  <h1>Тест: вопросы с выбором ответа</h1>
+  <p class="lead">Вопросы в стиле КР по всем 12 темам. Нажми на вариант — сразу увидишь, верно ли, и объяснение.</p>
+  <div class="row noprint" style="margin-bottom:12px">
+    <button class="acc2" onclick="startExam()">Режим «КР»: 12 случайных, 15 минут</button>
+    <button class="ghost" onclick="renderQuiz(currentTopic,true)">Перемешать</button>
+  </div>
+  <div class="filter" id="quizFilter"></div>
+  <div class="score" id="qscore"></div>
+  <div id="quizList"></div>
+</section>
+
+<!-- ======================= TASKS ======================= -->
+<section class="view" id="v-tasks">
+  <h1>Задачи с решениями</h1>
+  <p class="lead">Задачи из образца КР, из файла «задачи к КР» и с семинаров. Реши на бумаге → введи ответ → проверь → открой решение.</p>
+  <div class="filter" id="taskFilter"></div>
+  <div id="taskList"></div>
+</section>
+
+<!-- ======================= TRAINER ======================= -->
+<section class="view" id="v-trainer">
+  <h1>Тренажёр задач</h1>
+  <p class="lead">Типовые задачи КР со случайными числами. Ответ считается верным при отклонении до 0,5%. Проценты вводи числом (например, 8,24 для 8,24%).</p>
+  <div class="card noprint">
+    <div class="row">
+      <div class="fld">Тип задачи<select id="trType" style="width:320px"></select></div>
+      <button onclick="newTrainer()">Новая задача</button>
+      <span style="margin-left:auto;font-weight:600" id="trStat"></span>
+    </div>
+  </div>
+  <div class="task" id="trBox"></div>
+</section>
+
+<!-- ======================= CALC ======================= -->
+<section class="view" id="v-calc">
+  <h1>Калькуляторы для самопроверки</h1>
+  <p class="lead">Чтобы проверить свои решения. На КР — только обычный калькулятор, так что сначала считай руками.</p>
+  <div class="grid g2">
+    <div class="card">
+      <h2>TVM: PV / FV / PMT / n / r</h2>
+      <p style="font-size:.9rem;color:var(--ink2);margin-top:-4px">Знаки как в Excel: деньги, которые ты отдаёшь, — со знаком «−». Например, кредит: PV = +1 000 000 (получил), PMT — отрицательный.</p>
+      <div class="row">
+        <div class="fld">Найти<select id="tvSolve"><option value="fv">FV</option><option value="pv">PV</option><option value="pmt">PMT</option><option value="n">n (периодов)</option><option value="r">r (годовая, %)</option></select></div>
+        <div class="fld">Годовая ставка, %<input id="tvR" type="number" value="10" step="any"></div>
+        <div class="fld">Периодов (n, всего)<input id="tvN" type="number" value="5" step="any"></div>
+        <div class="fld">Начислений в год (m)<input id="tvM" type="number" value="1" step="any"></div>
+        <div class="fld">PV<input id="tvPV" type="number" value="-1000" step="any"></div>
+        <div class="fld">PMT<input id="tvPMT" type="number" value="0" step="any"></div>
+        <div class="fld">FV<input id="tvFV" type="number" value="0" step="any"></div>
+        <div class="fld">Платёж<select id="tvT"><option value="0">в конце (постнумерандо)</option><option value="1">в начале (пренумерандо)</option></select></div>
+      </div>
+      <div class="row" style="margin-top:12px"><button onclick="calcTVM()">Посчитать</button></div>
+      <div class="res" id="tvRes"></div>
+    </div>
+
+    <div class="card">
+      <h2>EAR и простые / сложные проценты</h2>
+      <div class="row">
+        <div class="fld">Номинальная ставка, %<input id="eR" type="number" value="8" step="any"></div>
+        <div class="fld">Начислений в год (m)<input id="eM" type="number" value="4" step="any"></div>
+        <div class="fld">Сумма PV<input id="eP" type="number" value="1000" step="any"></div>
+        <div class="fld">Лет<input id="eT" type="number" value="3" step="any"></div>
+      </div>
+      <div class="row" style="margin-top:12px"><button onclick="calcEAR()">Посчитать</button></div>
+      <div class="res" id="eRes"></div>
+    </div>
+
+    <div class="card">
+      <h2>Темп роста: AAGR и CAGR</h2>
+      <div class="fld" style="width:100%">Ряд значений через пробел или «;» (по годам)<input id="gS" style="width:100%" value="100 150 120 180"></div>
+      <div class="row" style="margin-top:12px"><button onclick="calcGrowth()">Посчитать</button></div>
+      <div class="res" id="gRes"></div>
+    </div>
+
+    <div class="card">
+      <h2>Аннуитеты и перпетуитеты</h2>
+      <div class="row">
+        <div class="fld">Платёж (CF₁)<input id="aC" type="number" value="1000" step="any"></div>
+        <div class="fld">Ставка за период, %<input id="aR" type="number" value="10" step="any"></div>
+        <div class="fld">Периодов n<input id="aN" type="number" value="10" step="any"></div>
+        <div class="fld">Темп роста g, %<input id="aG" type="number" value="0" step="any"></div>
+      </div>
+      <div class="row" style="margin-top:12px"><button onclick="calcAnn()">Посчитать</button></div>
+      <div class="res" id="aRes"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Финансовые коэффициенты по отчётности</h2>
+    <p style="font-size:.9rem;color:var(--ink2);margin-top:-4px">Пустые поля пропускаются. Пример заполнен данными Allied Food Products (2014) из лекций 3–4.</p>
+    <div class="row" id="ratioIn"></div>
+    <div class="row" style="margin-top:12px"><button onclick="calcRatios()">Посчитать</button></div>
+    <div id="ratioRes"></div>
+  </div>
+</section>
+</main>
+<footer>Собрано по материалам курса «Основы корпоративных финансов»: лекции 1–7, семинары 1–3, образец КР и задачи к КР. Сверяй спорные моменты с преподавателем.</footer>
+
+<script>
+/* ===================== helpers ===================== */
+const $=s=>document.querySelector(s);
+const fr=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const F=s=>`<span class="f">${s}</span>`;
+const fmt=(x,d=2)=>{if(!isFinite(x))return '—';return x.toLocaleString('ru-RU',{minimumFractionDigits:d,maximumFractionDigits:d})};
+const pct=(x,d=2)=>fmt(x*100,d)+'%';
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const AF=(r,n)=>(1/r-1/(r*Math.pow(1+r,n)));
+const FVAF=(r,n)=>(Math.pow(1+r,n)-1)/r;
+const rnd=(a,b,s=1)=>Math.round((a+Math.random()*(b-a))/s)*s;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function tex(el){try{if(window.renderMathInElement)renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false,strict:'ignore'})}catch(e){}}
+const parseNum=s=>parseFloat(String(s).replace(/\s/g,'').replace(',','.'));
+
+/* ===================== topics ===================== */
+const TOPICS=[
+ ['fm','ФМ и корпоративные финансы'],
+ ['goals','Цели и задачи финансового менеджера'],
+ ['legal','Юридические формы бизнеса'],
+ ['board','Директора, менеджеры, совет директоров'],
+ ['agency','Агентские конфликты'],
+ ['iv','Внутренняя стоимость'],
+ ['fs','Финансовые отчёты'],
+ ['ratios','Финансовые коэффициенты'],
+ ['int','Простые и сложные проценты'],
+ ['tvm','Временная стоимость денег: PV, FV'],
+ ['ann','Аннуитеты и перпетуитеты'],
+ ['growth','Темп роста: AAGR, CAGR'],
+];
+const TN=Object.fromEntries(TOPICS);
+
+/* ===================== THEORY ===================== */
+const R=String.raw;
+const THEORY={
+fm:R`
+<p><b>Финансы</b> (Вебстер) — система, включающая денежное обращение, предоставление кредита, осуществление инвестиций и банковские услуги. Термин применяется к <b>трём областям</b>: финансовые рынки, инвестирование, финансовый менеджмент.</p>
+<p><b>Финансовый рынок</b> — система отношений между экономическими агентами (бизнес, финансовые посредники, население, государство) по поводу создания, обмена и аккумулирования денежных средств. Инструменты: акции, облигации, ипотечные облигации, займы, депозитные сертификаты, деривативы.</p>
+<p><b>Инвестирование</b> — вложение денег для сохранения стоимости и получения приемлемой прибыли. <b>По Грэму</b> — то же, но <i>на основе тщательного анализа</i>: это отделяет инвестиции от спекуляций.</p>
+<p><b>Финансовый менеджмент</b> — управление денежными потоками компании для обеспечения прибыльности, ликвидности и финансовой устойчивости.</p>
+<p><b>Корпоративные финансы</b> — принципы принятия решений о том, <i>где брать деньги</i> (инвестиции/кредиты) и <i>на что их тратить</i> (активы/проекты), чтобы максимизировать стоимость бизнеса для владельцев.</p>
+<table><tr><th>Корпоративные финансы</th><th>Финансовый менеджмент</th></tr>
+<tr><td>Наука, теория. «Взгляд сверху»: как устроены финансовые законы и механизмы</td><td>Практика. «Взгляд изнутри»: как финансовый директор ежедневно применяет эти законы</td></tr></table>
+<p>В целом термины — <b>синонимы</b>. Общая итоговая цель: увеличение стоимости фирмы = рост благосостояния акционеров <b>в средне- и долгосрочной перспективе</b>.</p>
+<h3>5 основных вопросов финансового управления</h3>
+<ol><li>Какова потребность в объёме финансирования?</li><li>Какие источники финансирования использовать?</li><li>Какова оптимальная структура капитала?</li><li>Каков оптимальный уровень денежного потока для функционирования компании?</li><li>Распределение прибыли: что реинвестировать, что вернуть акционерам (дивиденды)?</li></ol>`,
+goals:R`
+<h3 style="margin-top:0">Задачи финансового менеджмента (лекция 1)</h3>
+<ul><li>Максимизация прибыли</li><li>Определение структуры капитала</li><li>Оценка потребности в средствах</li><li>Поддержание надлежащего денежного потока</li><li>Минимизация капитальных затрат</li></ul>
+<h3>Главная цель</h3>
+<p>Инвесторы покупают акции ради высокой доходности без чрезмерного риска. Поэтому основная цель менеджеров — <b>рост благосостояния акционеров = максимизация (внутренней) цены обыкновенных акций</b>.</p>
+<p><b>Цена акции определяется тремя факторами:</b></p>
+<ol><li><b>Величина</b> денежных потоков, которые генерирует актив;</li><li><b>Распределение во времени</b>: чем раньше приходят деньги, тем лучше (их можно реинвестировать);</li><li><b>Риск</b> (уровень уверенности): инвесторы не склонны к риску — при прочих равных акции с более определёнными потоками стоят дороже.</li></ol>
+<h3>Инвестиционные и финансовые решения</h3>
+<table><tr><th>Инвестиционные — на что тратить</th><th>Финансовые — откуда деньги</th></tr>
+<tr><td>Facebook покупает WhatsApp за 22 млрд долл.; GSK — 6,6 млрд на R&D; Union Pacific — 200 локомотивов</td><td>Оплата частично акциями; выпуск облигаций на 5 млрд; погашение долга; выкуп акций; дивиденды; реинвестирование прибыли</td></tr></table>
+<p><b>Цикл денег:</b> (1) деньги от продажи финансовых активов инвесторам → (2) вложены в реальные активы → (3) деньги от операций → (4а) реинвестированы или (4b) возвращены инвесторам.</p>
+<h3>Польза для общества от максимизации стоимости</h3>
+<p>Для физлиц (многие — акционеры прямо или косвенно), для потребителей (эффективные компании производят качественные товары с низкими затратами), для сотрудников (растущие компании нанимают людей).</p>`,
+legal:R`
+<table><tr><th>Форма</th><th>Плюсы</th><th>Минусы</th></tr>
+<tr><td><b>Единоличное владение</b> (sole proprietorship, ИП) — неинкорпорированный бизнес одного физлица</td><td>Простая регистрация; упрощённый учёт; ниже налог</td><td>Неограниченная личная ответственность; жизнь бизнеса = жизнь владельца; трудно привлечь крупный капитал</td></tr>
+<tr><td><b>Партнёрство</b> (partnership) — соглашение 2+ лиц вести бизнес совместно</td><td>Несложная регистрация; можно привлечь больше средств; налоги ниже, чем у корпорации</td><td>Неограниченная ответственность; ограниченная жизнь; трудно получить крупный капитал; нужно согласовывать решения</td></tr>
+<tr><td><b>Корпорация</b> — долевая собственность, разделение собственности и управления</td><td>Неограниченная жизнь; высокая ликвидность долей (акций); <b>ограниченная ответственность</b>; можно привлечь большой капитал</td><td><b>Двойное налогообложение</b>; сложная регистрация и отчётность; сложная система управления</td></tr>
+<tr><td><b>LP / LLP</b> (товарищество с ограниченной ответственностью)</td><td colspan="2">Два типа партнёров: <b>генеральные</b> (неограниченная ответственность, управляют) и <b>ограниченные</b> (отвечают в пределах вклада, в управлении не участвуют)</td></tr>
+<tr><td><b>LLC</b> (США)</td><td colspan="2">Сочетает простое налогообложение партнёрства/ИП с ограниченной ответственностью корпорации</td></tr></table>
+<p><b>Двойное налогообложение:</b> (1) налог на прибыль на уровне корпорации; (2) НДФЛ с дивидендов у акционеров.</p>
+<h3>Россия: ПАО и непубличное АО</h3>
+<p>ПАО — корпорация в классическом понимании. Непубличное АО — акции распределяются среди учредителей или заранее определённого круга лиц. До 1 сентября 2014 г. — ОАО/ЗАО. Черты АО: капитал разделён на акции, ограниченная ответственность. <b>Минимальный уставный капитал: ПАО — 100 000 ₽, непубличное — 10 000 ₽.</b></p>`,
+board:R`
+<p><b>Корпорация:</b> собственники — акционеры (владельцы обыкновенных акций); руководители — менеджеры, нанятые <b>Советом директоров</b> для управления в интересах акционеров.</p>
+<h3>Совет директоров (Board of Directors)</h3>
+<p>Избранная группа лиц, <b>представляющих акционеров</b>; руководящий орган, собирается регулярно для определения политики корпоративного управления.</p>
+<ul><li><b>Inside directors</b> — сотрудники компании, могут не получать отдельного вознаграждения;</li><li><b>Outside directors</b> — не связаны с компанией, получают вознаграждение.</li></ul>
+<p><b>Типичные обязанности СД:</b> дивидендная политика; целевая структура капитала; найм/увольнение топ-менеджеров (особенно CEO); вознаграждение руководителей; поддержка менеджмента; сохранение ресурсов; общие цели и стратегия; обеспечение инструментами для управления.</p>
+<h3>Иерархия</h3>
+<p><b>Chairman</b> (председатель СД, высший по рангу) → <b>CEO</b> (высшее должностное лицо исполнительной власти) → <b>President</b> (второе лицо; иногда совмещён с COO) → <b>CFO</b> (вице-президент по финансам, подчиняется президенту) → <b>Treasurer</b> и <b>Controller</b>.</p>
+<table><tr><th>Казначей (Treasurer)</th><th>Контролер (Controller)</th></tr>
+<tr><td>Денежные потоки и ликвидные ценные бумаги; поддержание структуры капитала; выпуск акций и облигаций; пенсионный план; финансовые риски. Руководит кредитным менеджером, менеджером по запасам, отделом инвестпланирования (капвложения)</td><td>Руководит бухгалтерией и налоговым отделом (главный бухгалтер)</td></tr></table>
+<h3>Sarbanes–Oxley Act (2002) и SEC</h3>
+<p>В публичной фирме <b>CEO и CFO лично подтверждают SEC достоверность отчётности</b>; за неточности — крупные штрафы или тюрьма. Принят после скандалов Enron и WorldCom.</p>
+<p><b>SEC</b> — независимое агентство США, создано после краха 1929 г. Миссия: защищать инвесторов; поддерживать справедливые, упорядоченные, эффективные рынки; способствовать накоплению капитала.</p>`,
+agency:R`
+<p><b>Агентская проблема</b> — конфликт интересов в любых отношениях, где одна сторона (агент) должна действовать в интересах другой (принципала).</p>
+<div class="grid g2">
+<div class="card" style="margin:0"><span class="pill red">1-й тип</span><b>Менеджеры ↔ акционеры</b><p>Менеджеры владеют малой долей акций, поэтому рост благосостояния акционеров может быть не главным их приоритетом (например, цель — максимально быстрое расширение масштабов).</p>
+<p><b>Решения:</b> система поощрений и штрафов; передача части решений на утверждение СД; система мониторинга деятельности менеджеров.</p></div>
+<div class="card" style="margin:0"><span class="pill red">2-й тип</span><b>Акционеры ↔ кредиторы</b><p>Ставка по кредиту зависит от структуры активов и капитала. Акционеры могут одобрить рискованный проект, купить рискованные активы, сделать структуру капитала рискованнее. <b>При успехе доход кредиторов не меняется, при неудаче теряют и акционеры, и кредиторы.</b></p>
+<p><b>Решения:</b> кредитные договоры (ковенанты), где ставка корректируется в зависимости от структуры активов и капитала.</p></div></div>
+<h3>Агентские издержки (3 категории)</h3>
+<ol><li>Затраты на <b>мониторинг</b> менеджеров (например, аудит);</li><li>Затраты на <b>структурирование</b> организации, ограничивающее нежелательное поведение (решения только после утверждения СД);</li><li><b>Упущенные возможности</b> из-за ограничений, наложенных на менеджеров.</li></ol>
+<p>Связанное понятие — <b>моральный риск</b>.</p>`,
+iv:R`
+<p>Рыночная цена акции видна каждый день, но она <b>не обязательно справедлива</b>: может быть завышена или занижена под влиянием краткосрочных факторов.</p>
+<p><b>Внутренняя (фундаментальная) стоимость</b> бизнеса или ценной бумаги — это <b>текущая стоимость всех ожидаемых будущих денежных потоков, дисконтированных по соответствующей (учитывающей риск) ставке</b>.</p>
+$$V=\frac{CF_1}{(1+r)^1}+\frac{CF_2}{(1+r)^2}+\dots+\frac{CF_n}{(1+r)^n}=\sum_{t=1}^{n}\frac{CF_t}{(1+r)^t}$$
+<ul><li>Оценка внутренней стоимости — суть анализа ценных бумаг; отличает успешных инвесторов.</li><li>Мы можем оценить внутреннюю стоимость, но не можем быть уверены, что правы.</li><li>У менеджеров лучшая информация о перспективах, поэтому их оценки обычно точнее, чем у внешних инвесторов.</li></ul>
+<div class="note blue"><b>Правило:</b> рыночная цена &lt; внутренней → акция <b>недооценена</b> → покупать; цена &gt; внутренней → переоценена → продавать.<br><b>Цель руководства</b> — максимизировать <b>внутреннюю</b> стоимость фирмы, а не её текущую рыночную цену.</div>`,
+fs:R`
+<h3 style="margin-top:0">Бухгалтерский баланс (Balance Sheet)</h3>
+$$\text{Assets}=\text{Liabilities}+\text{Equity}$$
+<p><b>Оборотные активы (CA):</b> cash, marketable securities (краткосрочные ценные бумаги), accounts receivable (дебиторская задолженность), inventories (запасы). <b>Внеоборотные:</b> net plant & equipment (net fixed assets).<br>
+<b>Текущие обязательства (CL):</b> accounts payable, accruals (начисления), notes payable (векселя к оплате — процентный долг). <b>Долгосрочные:</b> long-term bonds/debt. <b>Собственный капитал:</b> common stock + retained earnings.</p>
+<h3>Отчёт о прибылях и убытках (Income Statement)</h3>
+<table><tr><td>Sales (выручка)</td></tr><tr><td>− Operating costs (без амортизации), в т.ч. COGS</td></tr><tr><td>= <b>EBITDA</b></td></tr><tr><td>− Depreciation & amortization</td></tr><tr><td>= <b>EBIT</b> (операционная прибыль)</td></tr><tr><td>− Interest (проценты)</td></tr><tr><td>= <b>EBT</b></td></tr><tr><td>− Taxes (EBT × T)</td></tr><tr><td>= <b>Net income</b> (чистая прибыль) → дивиденды + нераспределённая прибыль</td></tr></table>
+<h3>Отчёт об изменении акционерного капитала</h3>
+$$RE_{\text{кон}}=RE_{\text{нач}}+NI-Div\qquad Equity_{\text{кон}}=\text{Common stock}+RE_{\text{кон}}$$
+<p>Common stock меняется только при эмиссии (+) или выкупе (−) акций.</p>
+<h3>Отчёт о движении денежных средств</h3>
+$$\Delta Cash=CF_{\text{операц}}+CF_{\text{инвест}}+CF_{\text{финанс}}$$
+<p>Инвестиции в основные средства — отток в инвестиционной деятельности (минус). Привлечение кредитов/эмиссия — приток в финансовой; дивиденды и погашение долга — отток.</p>
+<h3>Ключевые индикаторы (лекция 3)</h3>
+<ul>
+<li><b>NOPAT</b> \(=EBIT\,(1-T)\) — операционная прибыль после налогов; не зависит от структуры долга, поэтому лучше сравнивает эффективность компаний и менеджеров, чем чистая прибыль.</li>
+<li><b>NOWC</b> (чистый операционный оборотный капитал) \(=(Cash+AR+Inv)-(AP+Accruals)\). Процентный долг (notes payable) не вычитается.</li>
+<li><b>NWC</b> \(=CA-CL\).</li>
+<li><b>Total operating capital</b> \(=NOWC+\text{Net fixed assets}\).</li>
+<li><b>FCF</b> \(=NOPAT-\Delta(\text{Total operating capital})\) — деньги, которые можно изъять без ущерба для деятельности.</li>
+<li><b>MVA</b> \(=\) рыночная стоимость собственного капитала \(-\) балансовая. Чем выше, тем лучше менеджмент поработал для акционеров (СД смотрит на MVA при вознаграждении).</li>
+<li><b>EVA</b> \(=NOPAT-\text{Invested capital}\times WACC_{\text{after-tax}}\). EVA &gt; 0 → операционная прибыль превышает стоимость капитала → создаётся стоимость; положительная EVA год за годом → MVA тоже положительная.</li>
+</ul>
+<p><b>Кто пользуется отчётностью:</b> менеджеры (рост цены акций), кредиторы (вероятность возврата), аналитики (прогноз прибыли, дивидендов, цены). Анализ = сравнение с отраслью + анализ тенденций.</p>`,
+ratios:R`
+<h3 style="margin-top:0">Ликвидность — сможет ли фирма платить по долгам вовремя?</h3>
+<table><tr><th>Показатель</th><th>Формула</th><th>Смысл</th></tr>
+<tr><td>Current ratio (текущей ликв.)</td><td>\(\dfrac{CA}{CL}\)</td><td>=1 — оборотные активы ровно покрывают CL; &gt;1 — покрывают с запасом; &lt;1 — не покрывают (тревожно). Слишком высокий — избыток запасов/денег, низкая эффективность</td></tr>
+<tr><td>Quick / acid test (быстрой ликв.)</td><td>\(\dfrac{CA-Inv}{CL}\)</td><td>Без запасов — наименее ликвидной части оборотных активов</td></tr>
+<tr><td>Cash ratio (абсолютной ликв.)</td><td>\(\dfrac{Cash+MS}{CL}\)</td><td>Самый «строгий»: только деньги и их эквиваленты — какую часть CL можно погасить немедленно</td></tr></table>
+<h3>Управление активами — разумен ли объём активов при текущих продажах?</h3>
+<table><tr><td>Inventory turnover</td><td>\(\dfrac{Sales}{Inventories}\) <span class="pill amber">Allied: 3000/615 = 4,9</span></td><td>Ниже отрасли — избыток запасов, дорого хранить; выше — риск дефицита</td></tr>
+<tr><td>DSO (период погашения дебиторки)</td><td>\(\dfrac{Receivables}{Sales/365}\)</td><td>Сколько дней в среднем ждём оплату. Сравнивают с кредитной политикой</td></tr>
+<tr><td>Fixed assets turnover</td><td>\(\dfrac{Sales}{\text{Net FA}}\)</td><td>Ниже отрасли — избыточные основные средства</td></tr>
+<tr><td>Total assets turnover</td><td>\(\dfrac{Sales}{TA}\)</td><td>Сколько выручки на 1 долл. активов</td></tr></table>
+<p style="font-size:.9rem;color:var(--ink2)">На семинаре 2 оборачиваемость запасов описана и как COGS / средние запасы. В задаче используй то, что дано в условии; если не уточнено — Sales / Inventories, как в лекции.</p>
+<h3>Управление долгом (леверидж) — степень финансового риска</h3>
+<table><tr><td>Debt to total capital</td><td>\(\dfrac{D}{D+E}\)</td><td>&gt;0,5 — долга больше, чем СК. Allied: 860/1800 = 48% при отрасли 36,4%</td></tr>
+<tr><td>Debt to equity</td><td>\(\dfrac{D}{E}\)</td><td>&gt;1 — долг больше СК; &gt;2 — как правило опасно</td></tr>
+<tr><td>TIE (покрытие процентов)</td><td>\(\dfrac{EBIT}{Interest}\)</td><td>Во сколько раз EBIT покрывает проценты. Allied: 283,8/88 = 3,2 при отрасли 6</td></tr>
+<tr><td>Equity multiplier</td><td>\(\dfrac{TA}{E}\)</td><td>Высокий — активы сильно финансируются долгом</td></tr></table>
+<p>D (total debt) = процентный долг: notes payable + long-term debt (без кредиторки и начислений).</p>
+<h3>Рентабельность — итог всей финансовой и операционной политики</h3>
+<table><tr><td>Gross margin</td><td>\(\dfrac{Sales-COGS}{Sales}\)</td><td>Operating margin</td><td>\(\dfrac{EBIT}{Sales}\)</td></tr>
+<tr><td>Profit margin</td><td>\(\dfrac{NI}{Sales}\)</td><td>BEP</td><td>\(\dfrac{EBIT}{TA}\)</td></tr>
+<tr><td>ROA</td><td>\(\dfrac{NI}{TA}\)</td><td>ROE</td><td>\(\dfrac{NI}{E}\)</td></tr>
+<tr><td>ROIC</td><td colspan="3">\(\dfrac{NOPAT}{E+\text{LT debt}+\text{ST debt}}=\dfrac{EBIT(1-T)}{\text{Total invested capital}}\)</td></tr></table>
+<p><b>ROA vs ROE vs ROIC:</b> ROA — отдача на все активы (чистая прибыль после процентов); ROE — интересы <b>акционеров</b>, только собственный капитал; ROIC — отдача на <b>весь инвестированный капитал</b> (акционеры + кредиторы), числитель NOPAT (деньги, доступные и тем, и другим). ROE можно «накачать» долгом, поэтому одного ROE недостаточно для оценки эффективности капитала.</p>
+<h3>Рыночные мультипликаторы</h3>
+<table><tr><td>EPS</td><td>\(\dfrac{NI}{\text{число акций}}\)</td><td>P/E</td><td>\(\dfrac{P}{EPS}\) — сколько платим за 1 долл. прибыли; ≥20 — рынок высоко оценивает перспективы (или переоценка)</td></tr>
+<tr><td>PEG</td><td>\(\dfrac{P/E}{g\,(\%)}\)</td><td>P/B</td><td>\(\dfrac{P}{BVPS}\)</td></tr>
+<tr><td>EV</td><td>\(\text{Market cap}+D-Cash\)</td><td>Net debt</td><td>\(D-Cash\); также EV/EBITDA, EV/Sales, Net debt/EBITDA</td></tr></table>
+<h3>Модель Дюпон</h3>
+$$ROE=\underbrace{\frac{NI}{Sales}}_{\text{Profit margin}}\times\underbrace{\frac{Sales}{TA}}_{\text{TA turnover}}\times\underbrace{\frac{TA}{E}}_{\text{Equity multiplier}}\qquad ROA=PM\times TATO,\quad ROE=ROA\times EM$$
+<p>Рост любого из трёх факторов увеличивает ROE: <b>рентабельность продаж</b> (контроль затрат), <b>оборачиваемость</b> (эффективность активов), <b>мультипликатор</b> (больше долга — выше ROE, но выше риск). Расширенный Дюпон раскладывает маржу:</p>
+$$\frac{NI}{Sales}=\frac{EBIT}{Sales}\times\frac{EBT}{EBIT}\times\frac{NI}{EBT}$$
+<p>(операционная маржа × процентная нагрузка × налоговая нагрузка)</p>
+<h3>Финансовый рычаг и ROE (пример из лекции 4)</h3>
+<p>Две одинаковые фирмы, активы 100 долл.; U — без долга, L — 50% долга под 10%.</p>
+<table><tr><th>Экономика</th><th>ROE фирмы U</th><th>ROE фирмы L</th></tr><tr><td>Хорошая</td><td>27%</td><td><b>48%</b></td></tr><tr><td>Средняя</td><td>9%</td><td><b>12%</b></td></tr><tr><td>Плохая</td><td>0%</td><td><b>−10%</b></td></tr></table>
+<div class="note"><b>Эффект рычага положительный</b>, когда операционная доходность активов (\(BEP=EBIT/TA\)) выше ставки процента по долгу: заёмные деньги зарабатывают больше, чем стоят, и разница достаётся акционерам. <b>Отрицательный</b> — когда доходность активов ниже ставки по долгу. Долг увеличивает и ожидаемый ROE, и его разброс (риск).</div>`,
+int:R`
+<table><tr><th>Простые проценты</th><th>Сложные проценты</th></tr>
+<tr><td>Начисляются только на исходную сумму</td><td>Начисляются на сумму с накопленными процентами («проценты на проценты»)</td></tr>
+<tr><td>$$FV=PV\,(1+r\cdot n)$$</td><td>$$FV=PV\,(1+r)^n$$</td></tr>
+<tr><td>Часто в судебных решениях (пример Maris Distributing vs Anheuser-Busch)</td><td>Основа большинства финансовых контрактов</td></tr></table>
+<p>При \(n>1\) сложные проценты дают больше простых; при \(n<1\) — наоборот.</p>
+<h3>Компаундирование и дисконтирование</h3>
+<p><b>Компаундирование</b> — нахождение будущей стоимости (FV) по известной PV. <b>Дисконтирование</b> — нахождение текущей стоимости (PV) по известной FV.</p>
+$$PV=\frac{FV}{(1+r)^n}\qquad n=\frac{\ln(FV/PV)}{\ln(1+r)}\qquad r=\left(\frac{FV}{PV}\right)^{1/n}-1$$
+<p><b>Правило 72:</b> время удвоения \(\approx 72/r(\%)\). 12% → ≈6 лет (точно 6,12).</p>
+<h3>Номинальная и эффективная ставка</h3>
+<p><b>Номинальная (stated, APR)</b> — объявленная годовая ставка. <b>EAR</b> — реальная годовая доходность с учётом всех начислений внутри года. При начислении несколько раз в год проценты начисляются и на уже начисленные проценты, поэтому EAR &gt; номинальной.</p>
+$$EAR=\left(1+\frac{r_{\text{ном}}}{m}\right)^{m}-1\qquad\text{непрерывно: } EAR=e^{r}-1\qquad FV=PV\left(1+\frac{r}{m}\right)^{m\cdot n}$$
+<table><tr><th>8% номинальных, m =</th><td>1</td><td>2</td><td>4</td><td>12</td><td>365</td><td>∞</td></tr><tr><th>EAR</th><td>8,00%</td><td>8,16%</td><td>8,24%</td><td>8,30%</td><td>8,33%</td><td>8,33% (\(e^{0{,}08}-1\))</td></tr></table>`,
+tvm:R`
+<p><b>Временная стоимость денег (TVM)</b> — денежная сумма сейчас стоит больше, чем та же сумма в будущем.</p>
+<p><b>Почему 1000 ₽ сегодня ≠ 1000 ₽ через год? Два главных фактора:</b></p>
+<ol><li><b>Альтернативная доходность (возможность инвестировать):</b> деньги сегодня можно вложить и получить проценты; откладывание — упущенная возможность (opportunity cost).</li><li><b>Инфляция и риск:</b> покупательная способность денег снижается со временем; будущее поступление не гарантировано.</li></ol>
+<p><b>Четыре фундаментальных фактора стоимости денег</b> (лекция 6): производственные возможности (ожидаемая доходность бизнеса); временные предпочтения потребления; риск (дефолта и рыночный); инфляция.</p>
+$$FV=PV(1+r)^n\qquad PV=\frac{FV}{(1+r)^n}\qquad DF=\frac{1}{(1+r)^n}$$
+<p><b>Дисконтирование простыми словами:</b> пересчёт будущих денег в сегодняшние — «сколько нужно вложить сегодня, чтобы получить сумму в будущем». <b>Чем выше ставка, тем меньше PV:</b> при высокой доходности альтернатив сегодня нужно вложить меньше, чтобы получить ту же будущую сумму (ставка в знаменателе в степени n).</p>
+<h3>Ставка как «альтернативная стоимость» vs «минимально приемлемая доходность»</h3>
+<table><tr><th>Альтернативная стоимость (opportunity cost)</th><th>Минимально приемлемая (требуемая) доходность</th></tr>
+<tr><td>Доходность, от которой отказываемся, выбрав данный вариант, — лучшая доступная альтернатива с тем же риском. Пример: держать деньги у себя или положить на депозит под 10%; сравнить предложения «100 000 сейчас или 180 000 через 5 лет»</td><td>Порог (hurdle rate), ниже которого инвестицию не принимают; отражает риск проекта и стоимость капитала (часто WACC). Пример: компания оценивает новый завод — принимает проект, только если NPV ≥ 0 при ставке 12%</td></tr></table>
+<p>Ставка дисконтирования: для <b>внешнего инвестора</b> — требуемая доходность с учётом риска актива; для <b>менеджмента</b> — средняя стоимость капитала фирмы (WACC). Учётная ставка — ставка ЦБ для банков, не путать.</p>
+<h3>Неравные денежные потоки и NPV</h3>
+$$PV=\sum_{t}\frac{CF_t}{(1+r)^t}\qquad FV_n=\sum_t CF_t(1+r)^{n-t}\qquad NPV=-I_0+\sum_{t=1}^{n}\frac{CF_t}{(1+r)^t}$$
+<p>NPV ≥ 0 — принять проект (увеличивает благосостояние акционеров); NPV &lt; 0 — отклонить.</p>
+<div class="note"><b>Ловушка «инвестиция через 3 года, стоимость через 11 лет»</b> (задача AON): деньги работают только \(11-3=8\) лет: \(FV=15\text{ млн}\cdot1{,}11^{8}\).</div>`,
+ann:R`
+<p><b>Аннуитет</b> — серия <b>равных</b> платежей через равные промежутки времени в течение определённого срока.</p>
+<table><tr><th>Обычный (ordinary, постнумерандо)</th><th>Пренумерандо (annuity due)</th></tr>
+<tr><td>Платежи в <b>конце</b> каждого периода. Кредиты, ипотека, купоны облигаций</td><td>Платежи в <b>начале</b> периода. Аренда, страховые взносы, пенсионные взносы, подписки</td></tr>
+<tr><td colspan="2">Пренумерандо = обычный × (1 + r): каждый платёж поступает на период раньше, значит дольше приносит проценты (для FV) и меньше дисконтируется (для PV). Поэтому он стоит дороже.</td></tr></table>
+$$PV_{ann}=PMT\left[\frac{1}{r}-\frac{1}{r(1+r)^n}\right]\qquad FV_{ann}=PMT\cdot\frac{(1+r)^n-1}{r}$$
+$$PV_{due}=PV_{ann}(1+r)\qquad FV_{due}=FV_{ann}(1+r)\qquad PMT=\frac{PV}{\frac{1}{r}-\frac{1}{r(1+r)^n}}$$
+<h3>Перпетуитет (бессрочный аннуитет)</h3>
+<p>Бесконечный поток равных платежей. Формулу FV не используют: при бесконечном числе платежей будущая стоимость бесконечна и не имеет смысла.</p>
+$$PV_{perp}=\frac{PMT}{r}$$
+<h3>Растущие потоки (лекция 6)</h3>
+$$PV_{\text{раст. перп}}=\frac{CF_1}{r-g},\ r>g\qquad PV_{\text{раст. ann}}=\frac{CF_1}{r-g}\left[1-\left(\frac{1+g}{1+r}\right)^{n}\right]$$
+<p>Растущий аннуитет = растущий перпетуитет с 1-го года − растущий перпетуитет с (n+1)-го года.</p>
+<h3>Отсроченные потоки</h3>
+<p>Перпетуитет или аннуитет, начинающийся не с 1-го периода: считаем PV формулой «на момент за один период до первого платежа», затем дисконтируем к нулю. Первый платёж в момент t:</p>
+$$PV_0=\frac{PV_{t-1}}{(1+r)^{t-1}}$$
+<h3>Кредиты и ипотека</h3>
+<ul><li>Ставка за период = годовая / m; число периодов = лет × m. Ипотека 30 лет, ежемесячно: \(n=360,\ r=r_{\text{год}}/12\).</li>
+<li>Платёж каждого периода = проценты (остаток × r) + погашение основного долга.</li>
+<li><b>Остаток долга после k платежей</b> = PV оставшихся (n − k) платежей: \(B_k=PMT\cdot AF(r,\,n-k)\).</li></ul>`,
+growth:R`
+<p><b>Коэффициент роста</b> (growth factor) — отношение значения к предыдущему. <b>Темп роста</b> (growth rate) — на сколько процентов выросло:</p>
+$$\text{коэф. роста}=\frac{X_t}{X_{t-1}}=1+g_t\qquad g_t=\frac{X_t}{X_{t-1}}-1$$
+<p>Коэффициент 1,25 ⇔ темп роста 25%; коэффициент 0,9 ⇔ темп −10%.</p>
+<h3>AAGR — средний годовой темп роста (арифметический)</h3>
+$$AAGR=\frac{g_1+g_2+\dots+g_n}{n}$$
+<h3>CAGR — среднегодовой темп роста со сложным процентом (геометрический)</h3>
+$$CAGR=\left(\frac{X_{\text{кон}}}{X_{\text{нач}}}\right)^{1/n}-1$$
+<p>n — число <b>периодов</b> (лет между первым и последним значением), а не число значений! 4 значения за 2020–2023 → n = 3.</p>
+<div class="note"><b>Пример:</b> 100 → 150 → 120. Темпы: +50% и −20%. AAGR = (50% − 20%)/2 = <b>15%</b>, но \(CAGR=(120/100)^{1/2}-1=\) <b>9,54%</b>.<br>AAGR ≥ CAGR всегда (среднее арифметическое ≥ среднего геометрического), равны только при постоянном темпе. AAGR завышает рост при волатильности; CAGR показывает «сглаженный» постоянный темп, давший тот же итог.</div>
+<p>Связь с TVM: CAGR — это r в формуле \(FV=PV(1+r)^n\).</p>`
+};
+
+/* ===================== INTRO (простыми словами) ===================== */
+const INTRO={
+fm:{p:R`Финансы компании — это про две вещи: <b>откуда взять деньги</b> и <b>куда их вложить</b>, чтобы бизнес стоил дороже. Корпоративные финансы — теория этого, финансовый менеджмент — ежедневная практика финансового директора.`,
+ e:R`Пекарня хочет вторую печь за 1 млн. Финансовый менеджер решает: брать кредит или звать партнёра (откуда деньги), окупится ли печь (куда вложить), сколько прибыли оставить в бизнесе, а сколько выплатить владельцу.`,
+ k:'Определения КФ и ФМ, их различие, общая цель, три области финансов.'},
+goals:{p:R`Владельцы (акционеры) вложили деньги и хотят, чтобы их доля дорожала. Поэтому главная цель менеджеров — <b>не прибыль этого года, а рост стоимости акций в долгосроке</b>. Стоимость зависит от того, сколько денег принесёт бизнес, когда и насколько это надёжно.`,
+ e:R`Можно поднять прибыль в этом году, урезав исследования и ремонт. Но через 3 года компания отстанет, и акции подешевеют. Хороший менеджер так не делает.`,
+ k:'Главная цель, три фактора цены акции, различие инвестиционных и финансовых решений.'},
+legal:{p:R`Главный вопрос формы бизнеса — <b>чем рискует владелец</b>. У ИП и в партнёрстве за долги бизнеса отвечаешь личным имуществом. У корпорации — только тем, что вложил. Зато корпорация платит налог дважды.`,
+ e:R`Кафе-ИП разорилось и должно банку 3 млн — банк может забрать квартиру владельца. Если это АО — акционер теряет только деньги, вложенные в акции.`,
+ k:'Плюсы и минусы каждой формы, двойное налогообложение, LP и LLC, минимальный капитал ПАО/непубличного АО.'},
+board:{p:R`Акционеров много, и они не управляют компанией сами. Они выбирают <b>совет директоров</b> (свой «надзорный орган»), а тот нанимает <b>CEO</b> и топ-менеджеров, которые управляют каждый день.`,
+ e:R`Акционеры Сбера не приходят на работу. Они выбирают набсовет, набсовет назначает главу банка, глава банка — финансового директора, тот — казначея и главного бухгалтера.`,
+ k:'Функции СД, кто кого нанимает, казначей vs контролер, закон Сарбейнса–Оксли.'},
+agency:{p:R`Если ты нанял кого-то действовать в твоих интересах, у него могут быть <b>свои интересы</b>. Менеджер хочет большую зарплату и большую империю, акционер — дорогие акции. Акционер хочет рискнуть, а кредитор — получить свои деньги назад.`,
+ e:R`Директор покупает себе бизнес-джет за счёт компании — конфликт с акционерами (1-й тип). Акционеры ставят все деньги компании, взятые в кредит, на рискованный проект: выиграют — заберут прибыль, проиграют — пострадает банк (2-й тип).`,
+ k:'Два типа конфликтов, три вида агентских издержек, способы защиты.'},
+iv:{p:R`Цена акции на бирже — это то, сколько за неё <b>платят сегодня</b>. Внутренняя стоимость — сколько она <b>на самом деле стоит</b>, если посчитать все будущие деньги, которые она принесёт, в пересчёте на сегодня.`,
+ e:R`Акция будет приносить по 100 ₽ в год вечно, а ставка 10% → внутренняя стоимость \(100/0{,}1=1000\) ₽. Если на бирже она стоит 800 ₽ — недооценена, выгодно покупать.`,
+ k:'Определение, правило «покупать недооценённое», цель менеджмента — внутренняя стоимость, а не текущая цена.'},
+fs:{p:R`Три главных отчёта — три фотографии компании. <b>Баланс</b>: что у компании есть и на чьи деньги (на дату). <b>ОПУ</b>: сколько заработала за период. <b>Отчёт о движении денег</b>: откуда пришли и куда ушли живые деньги. <b>Отчёт об изменении капитала</b>: как менялась доля владельцев.`,
+ e:R`Выручка 1000, себестоимость и расходы 700 → EBITDA 300; амортизация 50 → EBIT 250; проценты 50 → EBT 200; налог 20% → чистая прибыль 160. Из неё дивиденды 60 → в нераспределённую прибыль 100.`,
+ k:'Структура отчётов, RE на конец года, операционный поток через изменение денег, NOPAT, FCF, MVA, EVA.'},
+ratios:{p:R`Сами по себе цифры отчётности мало что говорят: прибыль 100 — это много или мало? Коэффициенты <b>делят одно на другое</b> и отвечают на конкретные вопросы: хватит ли денег платить долги (ликвидность), не слишком ли много долга (леверидж), эффективно ли используются активы (оборачиваемость), сколько прибыли на рубль (рентабельность), дорого ли стоит акция (мультипликаторы).`,
+ e:R`Оборотные активы 300, краткосрочные долги 150 → current ratio = 2: на каждый рубль ближайших долгов есть 2 рубля активов, которые скоро превратятся в деньги. Чистая прибыль 50, собственный капитал 250 → ROE = 20%: каждый рубль владельцев заработал 20 копеек за год.`,
+ k:'Формулы и смысл всех групп, Дюпон, найти один показатель через другие, эффект рычага.'},
+int:{p:R`<b>Простые проценты</b> — проценты всегда считаются от исходной суммы. <b>Сложные</b> — проценты добавляются к сумме, и в следующем году проценты начисляются уже и на них («проценты на проценты»). Если банк начисляет проценты чаще, чем раз в год, реальная годовая доходность (EAR) выше объявленной.`,
+ e:R`100 ₽ под 10% на 2 года. Простые: \(100+10+10=120\). Сложные: \(100\to110\to121\) — лишний рубль это процент на процент. Если 10% начисляют раз в полгода по 5%: \(1{,}05^2=1{,}1025\) → EAR = 10,25%.`,
+ k:'FV и PV, сколько лет нужно, EAR, непрерывное начисление, разница простых и сложных процентов.'},
+tvm:{p:R`Рубль сегодня дороже рубля завтра: его можно вложить, а ещё цены растут. Поэтому суммы из разных лет <b>нельзя просто складывать</b> — сначала их надо привести к одному моменту: к сегодняшнему (дисконтирование, PV) или к будущему (наращение, FV).`,
+ e:R`Что лучше: 100 000 сейчас или 120 000 через 3 года при ставке 8%? \(PV=120\,000/1{,}08^3=95\,260\) — меньше 100 000, значит, лучше взять сейчас.`,
+ k:'Два фактора TVM, почему ↑ставка → ↓PV, альтернативная стоимость vs требуемая доходность, задачи с потоками в разные годы.'},
+ann:{p:R`<b>Аннуитет</b> — одинаковые платежи через равные промежутки (ипотека, аренда, пенсия). Вместо того чтобы дисконтировать каждый платёж отдельно, есть готовая формула. <b>Перпетуитет</b> — такие платежи вечно. Если платёж в <b>начале</b> периода (пренумерандо), он стоит дороже на \((1+r)\).`,
+ e:R`Кредит 100 000 на 3 года под 10%, платежи в конце года. \(AF=\frac{1}{0{,}1}-\frac{1}{0{,}1\cdot1{,}1^3}=2{,}4869\) → платёж \(100\,000/2{,}4869=40\,211\) в год.`,
+ k:'PV/FV аннуитета, платёж по кредиту и ипотеке, остаток долга, пренумерандо, перпетуитет, растущие и отсроченные потоки.'},
+growth:{p:R`Как быстро растёт выручка в среднем за год? Можно взять <b>обычное среднее</b> годовых темпов (AAGR), но оно врёт при скачках. Честнее <b>CAGR</b> — постоянный темп, который из начального значения дал бы конечное.`,
+ e:R`Выручка 100 → 200 → 100. Темпы +100% и −50%, AAGR = +25%, хотя по факту роста нет. CAGR = \((100/100)^{1/2}-1=0\%\) — правда.`,
+ k:'Темп и коэффициент роста, AAGR, CAGR, почему AAGR ≥ CAGR, как считать n.'},
+};
+
+/* ===================== GLOSSARY ===================== */
+const GLOSS=[
+['AAGR','Average Annual Growth Rate','средний арифметический темп роста за год'],
+['AF','Annuity Factor','аннуитетный множитель: во сколько раз PV аннуитета больше одного платежа'],
+['AP','Accounts Payable','кредиторская задолженность — долги поставщикам (беспроцентные)'],
+['AR, Receivables','Accounts Receivable','дебиторская задолженность — сколько должны нам покупатели'],
+['Accruals','Accruals','начисленные, но ещё не выплаченные обязательства (зарплата, налоги)'],
+['Annuity due','Annuity due','аннуитет пренумерандо — платежи в начале периода'],
+['APR, stated rate','Annual Percentage Rate','номинальная (объявленная) годовая ставка'],
+['BEP','Basic Earning Power','базовая доходность активов, EBIT/TA'],
+['Board of Directors','Board of Directors','совет директоров'],
+['CA','Current Assets','оборотные (текущие) активы: деньги, ценные бумаги, дебиторка, запасы'],
+['CAGR','Compound Annual Growth Rate','среднегодовой темп роста со сложным процентом'],
+['Cash, MS','Cash, Marketable Securities','денежные средства и краткосрочные ценные бумаги'],
+['CEO / CFO / COO','Chief Executive / Financial / Operating Officer','гендиректор / финансовый директор / операционный директор'],
+['CF','Cash Flow','денежный поток'],
+['CL','Current Liabilities','текущие (краткосрочные) обязательства'],
+['COGS','Cost of Goods Sold','себестоимость проданных товаров'],
+['Common stock','Common stock','обыкновенные акции; в балансе — вложенный акционерами капитал'],
+['Compounding','Compounding','компаундирование — наращение, поиск FV'],
+['Controller','Controller','контролер — главный бухгалтер (учёт и налоги)'],
+['CR','Current Ratio','коэффициент текущей ликвидности, CA/CL'],
+['D, Debt','Debt','процентный долг: кредиты, облигации, векселя к оплате'],
+['D&A','Depreciation & Amortization','амортизация основных средств и нематериальных активов'],
+['D/E','Debt to Equity','долг к собственному капиталу'],
+['DF','Discount Factor','дисконтный множитель, 1/(1+r)ⁿ'],
+['Discounting','Discounting','дисконтирование — пересчёт будущей суммы в сегодняшнюю (PV)'],
+['Div','Dividends','дивиденды — часть прибыли, выплаченная акционерам'],
+['DSO','Days Sales Outstanding','период погашения дебиторки, дней'],
+['E, Equity','Shareholders’ Equity','собственный (акционерный) капитал'],
+['EAR','Effective Annual Rate','эффективная годовая ставка'],
+['EBIT','Earnings Before Interest and Taxes','операционная прибыль: до процентов и налогов'],
+['EBITDA','EBIT + Depreciation & Amortization','прибыль до процентов, налогов и амортизации'],
+['EBT','Earnings Before Taxes','прибыль до налогообложения'],
+['EM','Equity Multiplier','мультипликатор собственного капитала, TA/E'],
+['EPS','Earnings Per Share','прибыль на одну акцию'],
+['EV','Enterprise Value','стоимость компании: капитализация + долг − деньги'],
+['EVA','Economic Value Added','экономическая добавленная стоимость: NOPAT минус плата за капитал'],
+['FA','Fixed Assets','основные средства (здания, оборудование)'],
+['FCF','Free Cash Flow','свободный денежный поток'],
+['FV','Future Value','будущая стоимость'],
+['g','growth rate','темп роста'],
+['Intrinsic value','Intrinsic value','внутренняя (фундаментальная) стоимость'],
+['Inv','Inventories','запасы'],
+['LLC','Limited Liability Company','компания с ограниченной ответственностью (США)'],
+['LP / LLP','Limited (Liability) Partnership','товарищество с ограниченной ответственностью'],
+['LT debt','Long-term debt','долгосрочный долг'],
+['m','—','сколько раз в году начисляются проценты'],
+['MVA','Market Value Added','рыночная добавленная стоимость: рыночная минус балансовая стоимость капитала'],
+['n','—','число периодов'],
+['NI','Net Income','чистая прибыль'],
+['Notes payable','Notes payable','векселя к оплате — краткосрочный процентный долг'],
+['NOPAT','Net Operating Profit After Taxes','операционная прибыль после налогов, EBIT(1−T)'],
+['NOWC','Net Operating Working Capital','чистый операционный оборотный капитал'],
+['NPV','Net Present Value','чистая приведённая стоимость проекта'],
+['NWC','Net Working Capital','чистый оборотный капитал, CA − CL'],
+['Ordinary annuity','Ordinary annuity','обычный аннуитет (постнумерандо) — платежи в конце периода'],
+['P/B','Price to Book','цена к балансовой стоимости акции'],
+['P/E','Price to Earnings','цена к прибыли на акцию'],
+['Perpetuity','Perpetuity','перпетуитет — бессрочный аннуитет'],
+['PM','Profit Margin','чистая рентабельность продаж, NI/Sales'],
+['PMT','Payment','платёж (одинаковый в аннуитете)'],
+['PV','Present Value','текущая (приведённая) стоимость'],
+['QR','Quick Ratio','коэффициент быстрой ликвидности'],
+['r','rate','ставка процента за период'],
+['RE','Retained Earnings','нераспределённая прибыль (накопленная)'],
+['ROA','Return on Assets','рентабельность активов, NI/TA'],
+['ROE','Return on Equity','рентабельность собственного капитала, NI/E'],
+['ROIC','Return on Invested Capital','рентабельность инвестированного капитала'],
+['Sales','Sales, Revenue','выручка'],
+['SEC','Securities and Exchange Commission','Комиссия по ценным бумагам и биржам США'],
+['SOX','Sarbanes–Oxley Act','закон Сарбейнса–Оксли (2002)'],
+['T','Tax rate','ставка налога на прибыль'],
+['TA','Total Assets','совокупные активы'],
+['TATO','Total Assets Turnover','оборачиваемость активов, Sales/TA'],
+['TIE','Times Interest Earned','коэффициент покрытия процентов, EBIT/Interest'],
+['Treasurer','Treasurer','казначей — деньги, ценные бумаги, привлечение капитала'],
+['TVM','Time Value of Money','временная стоимость денег'],
+['WACC','Weighted Average Cost of Capital','средневзвешенная стоимость капитала'],
+];
+function renderGloss(){
+  const q=($('#glQ').value||'').toLowerCase();
+  const rows=GLOSS.filter(g=>!q||g.join(' ').toLowerCase().includes(q));
+  $('#glList').innerHTML='<table>'+rows.map(([a,b,c])=>`<tr><td style="width:18%"><b>${a}</b></td><td style="width:30%;color:var(--ink2)">${b}</td><td>${c}</td></tr>`).join('')+'</table>'+(rows.length?'':'<p>Ничего не найдено.</p>');
+}
+
+function renderTheory(){
+  $('#theoryList').innerHTML=TOPICS.map(([k,t],i)=>`<details class="acc" id="th-${k}"><summary><span class="num">${i+1}</span>${t}</summary><div><div class="intro"><div><span class="itag">Простыми словами</span>${INTRO[k].p}</div><div><span class="itag">Пример</span>${INTRO[k].e}</div><div><span class="itag kr">Что спросят на КР</span>${INTRO[k].k}</div></div><h3 class="more">Подробно</h3>${THEORY[k]}</div></details>`).join('');
+  tex($('#theoryList'));
+}
+function toggleAll(o){document.querySelectorAll('#theoryList details').forEach(d=>d.open=o)}
+
+/* ===================== FORMULAS ===================== */
+const FORMS=[
+['Сложные и простые проценты, EAR',[
+ ['Будущая стоимость (сложные)',R`FV=PV(1+r)^n`],
+ ['Текущая стоимость',R`PV=\dfrac{FV}{(1+r)^n}`],
+ ['Простые проценты',R`FV=PV(1+r\cdot n)`],
+ ['Начисление m раз в год',R`FV=PV\left(1+\dfrac{r}{m}\right)^{m n}`],
+ ['Эффективная ставка',R`EAR=\left(1+\dfrac{r}{m}\right)^{m}-1`],
+ ['Непрерывное начисление',R`EAR=e^{r}-1,\quad FV=PV\,e^{r n}`],
+ ['Число периодов',R`n=\dfrac{\ln(FV/PV)}{\ln(1+r)}`],
+ ['Ставка',R`r=\left(\dfrac{FV}{PV}\right)^{1/n}-1`],
+ ['Правило 72',R`t_{\text{удв}}\approx\dfrac{72}{r(\%)}`],
+]],
+['Аннуитеты и перпетуитеты',[
+ ['Аннуитетный фактор (PV)',R`AF(r,n)=\dfrac{1}{r}-\dfrac{1}{r(1+r)^n}=\dfrac{1-(1+r)^{-n}}{r}`],
+ ['PV обычного аннуитета',R`PV=PMT\cdot AF(r,n)`],
+ ['FV обычного аннуитета',R`FV=PMT\cdot\dfrac{(1+r)^n-1}{r}`],
+ ['Пренумерандо (annuity due)',R`PV_{due}=PV\,(1+r),\quad FV_{due}=FV\,(1+r)`],
+ ['Платёж по кредиту',R`PMT=\dfrac{PV}{AF(r,n)}`],
+ ['Остаток долга после k платежей',R`B_k=PMT\cdot AF(r,\,n-k)`],
+ ['Перпетуитет',R`PV=\dfrac{PMT}{r}`],
+ ['Растущий перпетуитет',R`PV=\dfrac{CF_1}{r-g},\quad r>g`],
+ ['Растущий аннуитет',R`PV=\dfrac{CF_1}{r-g}\left[1-\left(\dfrac{1+g}{1+r}\right)^{n}\right]`],
+ ['Отсроченный поток (1-й платёж в t)',R`PV_0=\dfrac{PV_{t-1}}{(1+r)^{t-1}}`],
+]],
+['Темп роста',[
+ ['Темп роста за период',R`g_t=\dfrac{X_t}{X_{t-1}}-1`],
+ ['Коэффициент роста',R`\dfrac{X_t}{X_{t-1}}=1+g_t`],
+ ['AAGR',R`AAGR=\dfrac{1}{n}\sum_{t=1}^{n}g_t`],
+ ['CAGR',R`CAGR=\left(\dfrac{X_{\text{кон}}}{X_{\text{нач}}}\right)^{1/n}-1`],
+]],
+['Финансовые отчёты',[
+ ['Баланс',R`TA=L+E`],
+ ['ОПУ',R`Sales-OpCosts=EBITDA;\ -D\&A=EBIT;\ -Int=EBT;\ -Tax=NI`],
+ ['Нераспределённая прибыль',R`RE_{1}=RE_{0}+NI-Div`],
+ ['Движение денег',R`\Delta Cash=OCF+ICF+FinCF`],
+ ['NOPAT',R`NOPAT=EBIT\,(1-T)`],
+ ['NOWC',R`NOWC=(Cash+AR+Inv)-(AP+Accruals)`],
+ ['FCF',R`FCF=NOPAT-\Delta(NOWC+\text{Net FA})`],
+ ['MVA',R`MVA=E_{\text{рын}}-E_{\text{бал}}`],
+ ['EVA',R`EVA=NOPAT-\text{Capital}\times WACC_{\text{after-tax}}`],
+]],
+['Финансовые коэффициенты',[
+ ['Current ratio',R`\dfrac{CA}{CL}`],
+ ['Quick ratio',R`\dfrac{CA-Inv}{CL}`],
+ ['Cash ratio',R`\dfrac{Cash+MS}{CL}`],
+ ['Inventory turnover',R`\dfrac{Sales}{Inventories}`],
+ ['DSO',R`\dfrac{Receivables}{Sales/365}`],
+ ['Fixed assets turnover',R`\dfrac{Sales}{\text{Net FA}}`],
+ ['Total assets turnover',R`\dfrac{Sales}{TA}`],
+ ['Debt to capital',R`\dfrac{D}{D+E}`],
+ ['D/E',R`\dfrac{D}{E}`],
+ ['TIE',R`\dfrac{EBIT}{Interest}`],
+ ['Equity multiplier',R`EM=\dfrac{TA}{E}\ \left(=1+\dfrac{D}{E},\ \text{если } TA=D+E\right)`],
+ ['Operating margin',R`\dfrac{EBIT}{Sales}`],
+ ['Profit margin',R`\dfrac{NI}{Sales}`],
+ ['ROA',R`\dfrac{NI}{TA}`],
+ ['ROE',R`\dfrac{NI}{E}`],
+ ['ROIC',R`\dfrac{EBIT(1-T)}{E+\text{LT debt}+\text{ST debt}}`],
+ ['BEP',R`\dfrac{EBIT}{TA}`],
+ ['Дюпон',R`ROE=\dfrac{NI}{Sales}\cdot\dfrac{Sales}{TA}\cdot\dfrac{TA}{E}`],
+ ['EPS, P/E, P/B',R`EPS=\dfrac{NI}{N},\quad P/E=\dfrac{P}{EPS},\quad P/B=\dfrac{P}{E/N}`],
+ ['EV',R`EV=\text{Market cap}+D-Cash`],
+]],
+];
+function renderFormulas(){
+  $('#formulaList').innerHTML=FORMS.map(([h,arr])=>`<div class="card"><h2>${h}</h2><table>${arr.map(([a,b])=>`<tr><td style="width:30%;vertical-align:middle">${a}</td><td class="ftd">\\(\\displaystyle ${b}\\)</td></tr>`).join('')}</table></div>`).join('');
+  tex($('#formulaList'));
+}
+
+/* ===================== CHEATSHEET (2 стороны А4) ===================== */
+function renderCheat(){
+ const b=(h,items)=>`<h4>${h}</h4>`+items.map(x=>`<div class="b">${x}</div>`).join('');
+ const m=s=>`\\(\\displaystyle ${s}\\)`;
+ const side1=
+ b('1. Проценты',[m(R`FV=PV(1+r)^n`)+' &nbsp; '+m(R`PV=\frac{FV}{(1+r)^n}`),m(R`\text{простые: }FV=PV(1+rn)`),m(R`EAR=\left(1+\tfrac{r}{m}\right)^m-1`)+' &nbsp; '+m(R`e^r-1`),m(R`n=\frac{\ln(FV/PV)}{\ln(1+r)}`)+' &nbsp; '+m(R`r=\left(\tfrac{FV}{PV}\right)^{1/n}-1`),'⚠ Вложили в t₁, оценка в t₂ → степень (t₂ − t₁)'])+
+ b('2. Аннуитеты',[m(R`AF=\frac{1}{r}-\frac{1}{r(1+r)^n}`),m(R`PV=PMT\cdot AF`)+' &nbsp; '+m(R`FV=PMT\frac{(1+r)^n-1}{r}`),m(R`\text{пренумерандо: }\times(1+r)`),m(R`PV_{perp}=\frac{PMT}{r}`)+' &nbsp; '+m(R`PV_{g\,perp}=\frac{CF_1}{r-g}`),m(R`PV_{g\,ann}=\frac{CF_1}{r-g}\left[1-\left(\frac{1+g}{1+r}\right)^n\right]`),m(R`PMT=\frac{PV}{AF}`)+' &nbsp; '+m(R`B_k=PMT\cdot AF(r,n-k)`),m(R`\text{отсрочка: }PV_0=\frac{PV_{t-1}}{(1+r)^{t-1}}`),'⚠ Ежемесячно: r/12 и n×12. Полугодие: r/2 и n×2'])+
+ b('3. Рост',[m(R`g_t=\frac{X_t}{X_{t-1}}-1`)+' &nbsp; '+m(R`AAGR=\frac{\sum g_t}{n}`),m(R`CAGR=\left(\frac{X_n}{X_0}\right)^{1/n}-1`),'AAGR ≥ CAGR; n = число периодов, не значений'])+
+ b('4. Отчёты',[m(R`TA=L+E`)+' &nbsp; '+m(R`RE_1=RE_0+NI-Div`),m(R`Sales\to EBITDA\xrightarrow{-D\&A}EBIT\xrightarrow{-Int}EBT\xrightarrow{-Tax}NI`),m(R`\Delta Cash=OCF+ICF+FinCF`),m(R`NOPAT=EBIT(1-T)`)+' &nbsp; '+m(R`FCF=NOPAT-\Delta OpCap`),m(R`NOWC=Cash+AR+Inv-AP-Accr`),m(R`MVA=E_{mkt}-E_{book}`)+' &nbsp; '+m(R`EVA=NOPAT-Cap\cdot WACC`)])+
+ b('5. Коэффициенты',[m(R`CR=\frac{CA}{CL}`)+' &nbsp; '+m(R`QR=\frac{CA-Inv}{CL}`)+' &nbsp; '+m(R`\frac{Cash+MS}{CL}`),m(R`DSO=\frac{AR}{Sales/365}`)+' &nbsp; '+m(R`\frac{Sales}{Inv}`)+' &nbsp; '+m(R`\frac{Sales}{TA}`),m(R`\frac{D}{D+E}`)+' &nbsp; '+m(R`\frac{D}{E}`)+' &nbsp; '+m(R`TIE=\frac{EBIT}{Int}`)+' &nbsp; '+m(R`EM=\frac{TA}{E}`),m(R`PM=\frac{NI}{S}`)+' &nbsp; '+m(R`ROA=\frac{NI}{TA}`)+' &nbsp; '+m(R`ROE=\frac{NI}{E}`),m(R`ROIC=\frac{EBIT(1-T)}{E+D}`)+' &nbsp; '+m(R`BEP=\frac{EBIT}{TA}`),m(R`P/E=\frac{P}{EPS}`)+' &nbsp; '+m(R`EV=Cap+D-Cash`)])+
+ b('6. Дюпон',[m(R`ROE=PM\times TATO\times EM`),m(R`ROA=PM\times TATO,\ \ ROE=ROA\times EM`),m(R`\frac{NI}{S}=\frac{EBIT}{S}\cdot\frac{EBT}{EBIT}\cdot\frac{NI}{EBT}`)])+
+ b('На калькуляторе',['Степень: '+m(R`1{,}07^{7}`)+' → 1.07 [xʸ] 7','Дробная степень (CAGR): '+m(R`x^{1/n}`)+' → x [xʸ] (1÷n)','Число периодов: [ln] — '+m(R`n=\ln(FV/PV)\div\ln(1+r)`),'Ипотека: сначала '+m(R`(1+r)^{n}`)+' в память [M+], потом AF','Непрерывно: '+m(R`e^{r}`)+' → [eˣ]'])+
+ b('EAR при 8% номинальных',['m=2: 8,16% · m=4: 8,24% · m=12: 8,30% · ∞: 8,33%'])+
+ b('Неравные потоки и NPV',[m(R`PV=\sum\frac{CF_t}{(1+r)^t}`)+' &nbsp; '+m(R`FV_n=\sum CF_t(1+r)^{n-t}`),m(R`NPV=-I_0+\sum\frac{CF_t}{(1+r)^t}`)+' → принять, если NPV ≥ 0'])+
+ b('Шкала времени',['<span class="mono">0 ─── 1 ─── 2 ─── … ─── n</span>','Постнумерандо: платежи в 1…n (конец периода). Пренумерандо: в 0…n−1 (начало). «Начало 1-го года» = момент 0, «конец 3-го года» = момент 3'])+
+ b('Эффект рычага (TA = D + E)',[m(R`ROE=\left[BEP+(BEP-r_d)\frac{D}{E}\right](1-T)`),'BEP > r<sub>d</sub> → долг повышает ROE; BEP < r<sub>d</sub> → снижает',m(R`EM=1+\frac{D}{E}`)+' &nbsp; '+m(R`\frac{D}{D+E}=\frac{D/E}{1+D/E}`)])+
+ b('Правило 72',[m(R`t_{\times2}\approx\frac{72}{r\%}`)+' — быстрая проверка ответа']);
+ const side2=
+ b('7. Алгоритмы типовых задач',[
+  '<b>Неравные взносы в начале года</b> → каждый наращиваем отдельно до конца срока',
+  '<b>Ипотека:</b> кредит = цена × (1 − взнос); '+m(R`r/12,\ n=12\cdot\text{лет}`)+'; PMT = Кредит/AF',
+  '<b>Остаток после k-го периода</b> = PV оставшихся платежей, не «сумма − k·PMT»',
+  '<b>Отсроченная рента</b> (1-й платёж в конце t): нарастить инвестицию до t−1, PMT = '+m(R`\frac{I(1+r)^{t-1}}{AF(r,n)}`),
+  '<b>Смена платежа по кредиту:</b> остаток после 1-го этапа → n по формуле '+m(R`n=-\frac{\ln(1-Br/PMT)}{\ln(1+r)}`)+' → последний платёж неполный',
+  '<b>Max notes payable при CR ≥ k:</b> '+m(R`\frac{CA+x}{CL+x}=k`)+'; запасы тоже растут на x (для QR)',
+  '<b>ROE при плане по долгу:</b> TA = Sales/TATO → E = TA·(1 − доля долга) → NI = (EBIT − Int)(1 − T)',
+  '<b>OCF из ΔCash:</b> OCF = ΔCash − ICF − FinCF (инвестиции — со знаком «−»)',
+  '<b>Дюпон:</b> TATO = ROA/PM; EM = ROE/ROA',
+  '<b>DSO:</b> AR = DSO × Sales/365'])+
+ b('8. Теория — ключевые слова',[
+  'КФ = теория (взгляд сверху); ФМ = практика (изнутри); синонимы. Цель — благосостояние акционеров в средне-/долгосроке',
+  '3 области финансов: фин. рынки, инвестирование, ФМ. Грэм: инвестиции = на основе анализа',
+  'Задачи ФМ: max прибыли, структура капитала, потребность в средствах, денежный поток, min кап. затрат',
+  'Цена акции ← величина CF, время CF, риск',
+  'Корпорация: + огранич. ответств., неогр. жизнь, ликвидность, капитал; − двойной налог, сложная регистрация',
+  'ИП, партнёрство: неогранич. ответств. LP: general (упр., неогр.) vs limited (вклад, не упр.). LLC = налог партнёрства + огранич. ответств.',
+  'ПАО ≥ 100 тыс ₽, непубличное АО ≥ 10 тыс ₽ (ОАО/ЗАО до 01.09.2014)',
+  'СД: дивиденды, структура капитала, найм/увольнение CEO, вознаграждение, стратегия. Inside vs outside directors',
+  'Chairman > CEO > President (COO) > CFO > Treasurer (деньги, ЦБ, эмиссии) / Controller (бухгалтерия, налоги)',
+  'SOX 2002: CEO + CFO подтверждают отчётность (Enron, WorldCom). SEC — с 1929',
+  'Агентские: 1) менеджеры ↔ акционеры; 2) акционеры ↔ кредиторы. Издержки: мониторинг, структурирование, упущенные возможности. Защита кредиторов — ковенанты',
+  'Внутр. стоимость = PV ожидаемых CF по ставке с учётом риска; цена < IV → покупать; цель менеджмента — max IV',
+  'TVM: альтернативная доходность + инфляция/риск. ↑r → ↓PV. 4 фактора: произв. возможности, предпочтения, риск, инфляция',
+  'Ставка: альтерн. стоимость (упущенная лучшая альтернатива) vs мин. приемлемая доходность (порог, WACC)',
+  'EAR > номинальной из-за процентов на проценты внутри года',
+  'Пренумерандо дороже (аренда, страховка); постнумерандо — кредиты, купоны. Перпетуитет: FV бесконечна'])+
+ b('Формы бизнеса — кратко',[`<table class="mini"><tr><th></th><th>Ответств.</th><th>Налог</th><th>Жизнь</th><th>Капитал</th></tr><tr><td>ИП</td><td>неогр.</td><td>1 раз</td><td>= владелец</td><td>мало</td></tr><tr><td>Партнёрство</td><td>неогр.</td><td>1 раз</td><td>огранич.</td><td>больше</td></tr><tr><td>Корпорация</td><td>огранич.</td><td>двойной</td><td>неогр.</td><td>много</td></tr><tr><td>LLC</td><td>огранич.</td><td>1 раз</td><td colspan="2">гибрид</td></tr></table>`])+
+ b('Ловушки в задачах',['Проценты → в долях: 6% = 0,06','DSO — 365 дней (если не сказано иное)','Notes payable — долг; AP и accruals — НЕ долг','Инвестиции в ОС в ОДДС — со знаком «−»','Рост CA и CL на одну сумму меняет CR','Ответ с единицами и на все вопросы задачи'])+
+ b('9. Интерпретация',[
+  'CR < 1 — тревожно; слишком высокий — неэффективно. QR без запасов. Cash ratio — самый строгий',
+  'D/(D+E) > 0,5 — долга больше СК; D/E > 2 — опасно; низкий TIE — мало запаса',
+  'Рычаг +, если BEP > ставки по долгу; иначе ROE падает. Долг ↑ ожидаемый ROE и риск',
+  'ROE — для акционеров; ROIC — весь капитал (NOPAT); одного ROE мало — накачивается долгом',
+  'Низкая оборачиваемость запасов — избыток запасов; DSO > кредитной политики — клиенты платят поздно'])+
+ `<h4>10. Перед сдачей</h4><div class="b">☐ ставка и n в одном периоде? ☐ начало/конец периода? ☐ единицы? ☐ ответил на ВСЕ вопросы задачи?</div>`;
+ $('#cheat').innerHTML=`<div class="sheet"><div class="sheet-h">Сторона 1 — формулы</div><div class="sheet-b">${side1}</div></div><div class="sheet"><div class="sheet-h">Сторона 2 — алгоритмы и теория</div><div class="sheet-b">${side2}</div></div>`;
+ tex($('#cheat'));
+}
+
+/* ===================== QUIZ ===================== */
+// [topic, question, [options], correctIndex, explanation]
+const QZ=[
+['fm','Как в курсе разграничиваются корпоративные финансы и финансовый менеджмент?',['КФ — практика, ФМ — теория','КФ — наука (взгляд сверху), ФМ — практика (взгляд изнутри); в целом — синонимы','Это противоположные дисциплины с разными целями','КФ изучает только банки, ФМ — только производственные компании'],1,'Лекция 1: корпоративные финансы — теория, «взгляд сверху»; финансовый менеджмент — практика финансового директора, «взгляд изнутри». Цель у обоих общая.'],
+['fm','Итоговая цель финансового менеджмента и корпоративных финансов:',['Максимизация выручки текущего года','Минимизация налогов','Увеличение благосостояния акционеров в средне- и долгосрочной перспективе','Максимизация числа сотрудников'],2,'Увеличение стоимости фирмы = рост благосостояния акционеров именно в средне- и долгосрочной перспективе.'],
+['fm','К каким трём областям наиболее применим термин «финансы»?',['Бухгалтерия, аудит, налоги','Финансовые рынки, инвестирование, финансовый менеджмент','Маркетинг, продажи, HR','Банки, биржи, страхование'],1,'Лекция 1: финансовые рынки, инвестирование, финансовый менеджмент.'],
+['fm','Определение инвестирования по Грэму отличается от общего тем, что:',['исключает акции','требует тщательного анализа — это отделяет инвестиции от спекуляций','допускает только государственные облигации','предполагает срок более 10 лет'],1,'По Грэму инвестирование — вложение с целью сохранить стоимость и получить адекватную прибыль на основе тщательного анализа.'],
+['fm','Какой вопрос НЕ входит в 5 основных вопросов финансового управления?',['Какова оптимальная структура капитала?','Какие источники финансирования использовать?','Какую рекламную стратегию выбрать?','Какую часть прибыли реинвестировать?'],2,'Пять вопросов: потребность в финансировании, источники, структура капитала, уровень денежного потока, распределение прибыли. Реклама — маркетинг.'],
+['goals','Основная цель менеджеров корпорации, по лекции:',['Максимизация бухгалтерской прибыли','Максимизация рыночной цены обыкновенных акций (благосостояния акционеров)','Максимизация доли рынка','Минимизация долга'],1,'Предполагается, что главная задача менеджеров — рост благосостояния акционеров, то есть максимизация цены обыкновенных акций.'],
+['goals','Что из перечисленного НЕ является фактором, определяющим цену акции (лекция 1)?',['Способность генерировать денежные потоки','Распределение денежных потоков во времени','Риск (уровень уверенности в потоках)','Балансовая стоимость основных средств'],3,'Цена акции определяется величиной, временем и риском денежных потоков.'],
+['goals','Что из перечисленного — финансовое (а не инвестиционное) решение?',['Покупка WhatsApp за $22 млрд','Расходы $6,6 млрд на R&D','Выпуск облигаций на $5 млрд','Покупка 200 локомотивов'],2,'Финансовые решения отвечают на вопрос «откуда деньги» (облигации, акции, займы, дивиденды, выкуп акций). Инвестиционные — «на что тратить».'],
+['goals','Почему при прочих равных акции с более определёнными денежными потоками стоят дороже?',['Из-за налогов','Инвесторы, как правило, не склонны к риску','Из-за правил биржи','Так требует SEC'],1,'Инвесторы не склонны к риску, поэтому выше оценивают менее рискованные потоки.'],
+['legal','Главный недостаток корпорации как формы бизнеса:',['Неограниченная ответственность владельцев','Ограниченный срок жизни','Двойное налогообложение прибыли','Невозможность привлечь капитал'],2,'Прибыль облагается налогом на уровне корпорации, а дивиденды — ещё и НДФЛ у акционеров. Также минусы: сложная регистрация и управление.'],
+['legal','Неограниченную личную ответственность по долгам бизнеса несут владельцы:',['корпорации','ИП (единоличного владения) и партнёрства','LLC','непубличного АО'],1,'У ИП и обычного партнёрства ответственность неограниченная; у корпорации, LLC и АО — ограниченная.'],
+['legal','В limited partnership ограниченные партнёры (limited partners):',['управляют компанией и отвечают всем имуществом','отвечают только в пределах вклада и обычно не участвуют в управлении','не получают прибыли','отвечают только за налоги'],1,'Генеральные партнёры управляют и несут неограниченную ответственность; ограниченные — отвечают в пределах вклада, в управлении не участвуют.'],
+['legal','Минимальный уставный капитал ПАО в РФ:',['10 000 ₽','100 000 ₽','1 000 000 ₽','Не установлен'],1,'ПАО — 100 000 ₽, непубличное АО — 10 000 ₽.'],
+['legal','LLC (Limited Liability Company) сочетает:',['двойное налогообложение и неограниченную ответственность','простое налогообложение партнёрства/ИП и ограниченную ответственность корпорации','публичное размещение акций и отсутствие отчётности','государственную собственность и частное управление'],1,'LLC — американская форма: налоги как у партнёрства, ответственность ограничена как у корпорации.'],
+['legal','Что из перечисленного — преимущество корпорации?',['Простая регистрация','Низкий налог','Неограниченный срок жизни и ликвидность долей','Простая система управления'],2,'Плюсы корпорации: неограниченная жизнь, высокая ликвидность акций, ограниченная ответственность, доступ к крупному капиталу.'],
+['board','Кто нанимает и увольняет CEO?',['Казначей','Контролер','Совет директоров','Аудитор'],2,'Найм/увольнение топ-менеджеров (особенно CEO) и их вознаграждение — типичные обязанности СД.'],
+['board','Кто отвечает за денежные потоки фирмы, выпуск акций и облигаций, поддержание структуры капитала?',['Контролер','Казначей (Treasurer)','Председатель СД','COO'],1,'Казначей: денежные потоки, ценные бумаги, структура капитала, выпуск акций/облигаций, пенсионный план, финансовые риски. Контролер — бухгалтерия и налоги.'],
+['board','Что требует закон Сарбейнса–Оксли (2002)?',['Ежемесячной выплаты дивидендов','Чтобы CEO и CFO лично подтверждали SEC точность отчётности','Запрета на выпуск облигаций','Обязательного аудита каждые 10 лет'],1,'После Enron и WorldCom CEO и CFO публичных компаний подтверждают точность отчётов; за неточности — штрафы и тюрьма.'],
+['board','Кто, как правило, является лицом самого высокого ранга в компании?',['CEO','CFO','Председатель совета директоров (Chairman)','Президент'],2,'СД — высший руководящий орган, его председатель — высший по рангу; CEO идёт следующим.'],
+['board','Внешние члены совета директоров (outside directors) —',['сотрудники компании без вознаграждения','лица, не связанные с компанией и получающие вознаграждение','представители кредиторов','менеджеры среднего звена'],1,'Inside directors — сотрудники компании; outside — не связаны с компанией, получают вознаграждение.'],
+['agency','Агентская проблема первого типа — конфликт между:',['акционерами и кредиторами','менеджерами и акционерами','компанией и государством','поставщиками и покупателями'],1,'1-й тип — менеджеры vs акционеры; 2-й тип — акционеры vs кредиторы.'],
+['agency','Агентская проблема второго типа возникает, когда:',['менеджеры расширяют бизнес ради масштаба','акционеры одобряют рискованный проект: при успехе выигрывают они, а доход кредиторов фиксирован','кредиторы требуют дивиденды','государство повышает налоги'],1,'При успехе доход кредиторов не растёт, при неудаче теряют обе стороны — риск перекладывается на кредиторов.'],
+['agency','Что НЕ относится к агентским издержкам?',['Затраты на аудит (мониторинг)','Затраты на структурирование организации','Убытки от упущенных возможностей из-за ограничений менеджеров','Процентные платежи по кредиту'],3,'Три категории агентских издержек: мониторинг, структурирование, упущенные возможности. Проценты — обычная стоимость долга.'],
+['agency','Как кредиторы обычно защищаются от агентской проблемы 2-го типа?',['Покупают акции компании','Включают в договор условия о корректировке ставки при изменении структуры активов и капитала','Назначают CEO','Отказываются от процентов'],1,'Самый очевидный способ — кредитные договоры (ковенанты) со ставкой, зависящей от структуры активов и капитала.'],
+['agency','Способ снизить агентский конфликт 1-го типа:',['Увеличить долг','Система поощрений и штрафов для менеджеров, мониторинг, утверждение решений СД','Отменить совет директоров','Выплатить все деньги кредиторам'],1,'Лекция 1: поощрения/штрафы, передача части решений СД, система мониторинга.'],
+['iv','Внутренняя стоимость актива — это:',['текущая биржевая цена','балансовая стоимость активов','текущая стоимость ожидаемых будущих денежных потоков по ставке, учитывающей риск','номинал акции'],2,'Intrinsic value = PV всех ожидаемых будущих CF, дисконтированных по соответствующей ставке.'],
+['iv','Рыночная цена акции ниже её внутренней стоимости. Значит, акция:',['переоценена — продавать','недооценена — покупать','оценена справедливо','не торгуется'],1,'Инвестор должен покупать недооценённые и продавать переоценённые бумаги.'],
+['iv','Что, согласно лекции, должно быть целью руководства фирмы?',['Максимизация текущей рыночной цены любой ценой','Максимизация внутренней стоимости фирмы','Минимизация внутренней стоимости','Максимизация балансовой стоимости'],1,'Цель — действия, максимизирующие внутреннюю стоимость фирмы, а не её текущую рыночную цену.'],
+['fs','Нераспределённая прибыль на начало года 770, чистая прибыль 280, дивиденды 180. Нераспределённая прибыль на конец года:',['1 050','870','590','950'],1,'RE₁ = 770 + 280 − 180 = 870.'],
+['fs','Что такое NOPAT?',['\\(NI+D\\&A\\)','\\(EBIT(1-T)\\)','\\(EBITDA-Int\\)','\\(Sales-COGS\\)'],1,'NOPAT — операционная прибыль после налогов; не зависит от структуры долга.'],
+['fs','Почему для сравнения компаний с разным долгом удобнее NOPAT, чем чистая прибыль?',['NOPAT всегда больше','Чистая прибыль уменьшается на проценты, поэтому зависит от долга; NOPAT — нет','NOPAT не облагается налогом','Чистая прибыль не публикуется'],1,'Компания с большим долгом имеет больше процентов и меньшую чистую прибыль даже при одинаковой операционной эффективности.'],
+['fs','MVA (Market Value Added) — это:',['NOPAT − стоимость капитала','рыночная стоимость собственного капитала минус его балансовая стоимость','выручка минус себестоимость','прирост денежных средств'],1,'MVA = рыночная − балансовая стоимость собственного капитала. В примере лекции: 19,5 млн − 0,5 млн = 19 млн.'],
+['fs','Положительная EVA означает, что:',['у компании есть долг','NOPAT превышает долларовую стоимость капитала, нужного для его получения','компания платит дивиденды','рыночная цена ниже балансовой'],1,'EVA = NOPAT − капитал × стоимость капитала. EVA > 0 → создаётся стоимость для акционеров.'],
+['fs','Денежные средства на начало года 55 000, на конец 25 000; инвестиционный поток −250 000, финансовый +170 000. Операционный поток:',['+50 000','−50 000','+110 000','−30 000'],0,'ΔCash = −30 000 = OCF − 250 000 + 170 000 → OCF = 50 000.'],
+['fs','Покупка нового оборудования отражается в отчёте о движении денежных средств как:',['приток в операционной деятельности','отток в инвестиционной деятельности','приток в финансовой деятельности','не отражается'],1,'Вложения в основные средства — инвестиционная деятельность, отток.'],
+['fs','Какой статьёй NOWC отличается от NWC (CA − CL)?',['В NOWC не вычитаются процентные краткосрочные долги (notes payable)','В NOWC не учитываются запасы','NOWC включает основные средства','Ничем'],0,'NOWC = операционные оборотные активы − беспроцентные текущие обязательства (AP, accruals). Notes payable — источник финансирования.'],
+['ratios','Коэффициент текущей ликвидности равен:',['\\(\\dfrac{CA-Inv}{CL}\\)','\\(\\dfrac{CA}{CL}\\)','\\(\\dfrac{Cash}{CL}\\)','\\(\\dfrac{TA}{E}\\)'],1,'Current ratio = оборотные активы / текущие обязательства.'],
+['ratios','Почему значение current ratio ниже 1 — тревожный сигнал, а слишком высокое тоже не всегда хорошо?',['Ниже 1 — оборотные активы не покрывают краткосрочные обязательства; очень высокое — избыток запасов/денег, неэффективное использование активов','Ниже 1 — слишком много денег; высокое — слишком мало','Значение не имеет экономического смысла','Ниже 1 — рост продаж; высокое — падение'],0,'CR < 1: на $1 краткосрочных долгов меньше $1 оборотных активов. Слишком высокий CR — «замороженный» капитал, который мог бы приносить доход.'],
+['ratios','Коэффициент быстрой ликвидности не учитывает:',['денежные средства','дебиторскую задолженность','запасы','краткосрочные ценные бумаги'],2,'Quick ratio = (CA − Inventories)/CL: запасы — наименее ликвидная часть оборотных активов.'],
+['ratios','Почему коэффициент абсолютной ликвидности (cash ratio) — самый «строгий»?',['В числителе только деньги и краткосрочные ценные бумаги — показывает, какую часть CL можно погасить немедленно','В нём учитываются все активы','В знаменателе — собственный капитал','Он всегда больше 1'],0,'Cash ratio = (Cash + marketable securities)/CL — защита кредиторов без продажи запасов и ожидания оплаты от покупателей.'],
+['ratios','DSO = 40 дней, годовые продажи $7 300 000 (365 дней). Дебиторская задолженность:',['$182 500','$800 000','$292 000','$1 825 000'],1,'Продажи в день = 7 300 000/365 = 20 000; AR = 40 × 20 000 = 800 000.'],
+['ratios','Times-Interest-Earned (TIE) рассчитывается как:',['\\(\\dfrac{NI}{Interest}\\)','\\(\\dfrac{EBIT}{Interest}\\)','\\(\\dfrac{EBITDA}{Debt}\\)','\\(\\dfrac{Interest}{EBIT}\\)'],1,'TIE = EBIT / проценты — во сколько раз операционная прибыль покрывает процентные платежи.'],
+['ratios','Мультипликатор собственного капитала (equity multiplier) =',['\\(\\dfrac{E}{TA}\\)','\\(\\dfrac{TA}{E}\\)','\\(\\dfrac{D}{E}\\)','\\(\\dfrac{NI}{E}\\)'],1,'EM = совокупные активы / собственный капитал; высокий EM — большая доля долга.'],
+['ratios','Формула Дюпон:',['\\(ROE=PM\\times TATO\\times EM\\)','\\(ROE=ROA\\times PM\\)','\\(ROA=ROE\\times EM\\)','\\(ROE=BEP\\times TIE\\)'],0,'ROE = Profit margin × Total assets turnover × Equity multiplier.'],
+['ratios','ROA = 10%, profit margin = 2%, ROE = 15%. Оборачиваемость активов и мультипликатор СК:',['5 и 1,5','0,2 и 1,5','5 и 0,67','2 и 1,5'],0,'TATO = ROA/PM = 10/2 = 5; EM = ROE/ROA = 15/10 = 1,5.'],
+['ratios','Чем ROIC отличается от ROA?',['В числителе NOPAT вместо чистой прибыли, в знаменателе — инвестированный капитал вместо активов','Ничем','ROIC считается до налогов и на собственный капитал','В ROIC используется выручка'],0,'ROIC = NOPAT / (E + процентный долг). Отражает отдачу для акционеров и кредиторов вместе.'],
+['ratios','Эффект финансового рычага на ROE положительный, когда:',['ставка по долгу выше доходности активов','доходность активов (BEP) выше ставки процента по долгу','компания не платит налоги','долга нет'],1,'Если заёмные деньги зарабатывают больше, чем стоят, разница достаётся акционерам и ROE растёт; иначе ROE падает.'],
+['ratios','Debt to total capital > 0,5 означает, что:',['собственный капитал больше долга','процентного долга больше, чем собственного капитала','компания банкрот','TIE < 1'],1,'Долг / (долг + СК) > 0,5 ⇔ D > E.'],
+['ratios','Коэффициент P/E показывает:',['сколько инвесторы платят за $1 прибыли на акцию','долю дивидендов в прибыли','оборачиваемость активов','долговую нагрузку'],0,'P/E = цена / EPS.'],
+['ratios','Как рост мультипликатора собственного капитала (при прочих равных) влияет на ROE?',['Снижает ROE','Повышает ROE, но увеличивает финансовый риск','Не влияет','Делает ROE отрицательным'],1,'ROE = PM × TATO × EM: больше долга → больше EM → выше ROE, но и риск.'],
+['int','При простых процентах будущая стоимость равна:',['\\(PV(1+r)^n\\)','\\(PV(1+r\\cdot n)\\)','\\(\\dfrac{PV}{(1+r)^n}\\)','\\(PV\\cdot e^{rn}\\)'],1,'Простые проценты начисляются только на исходную сумму.'],
+['int','Номинальная ставка 8%, начисление ежеквартально. EAR ≈',['8,00%','8,16%','8,24%','8,30%'],2,'(1 + 0,08/4)⁴ − 1 = 1,02⁴ − 1 = 8,24%.'],
+['int','Почему при начислении несколько раз в год EAR выше номинальной ставки?',['Банк берёт комиссию','Проценты начисляются и на ранее начисленные проценты внутри года','Из-за инфляции','Из-за налогов'],1,'Внутригодовое компаундирование: «проценты на проценты».'],
+['int','EAR при номинальной ставке 10% и непрерывном начислении:',['10,00%','10,25%','10,47%','10,52%'],3,'e^0,10 − 1 = 10,52%.'],
+['int','По правилу 72 сумма удвоится при 12% годовых примерно за:',['3 года','6 лет','9 лет','12 лет'],1,'72/12 = 6 (точно ln2/ln1,12 = 6,12 года).'],
+['int','Нахождение будущей стоимости по известной текущей называется:',['дисконтированием','компаундированием (наращением)','амортизацией','капитализацией рынка'],1,'Компаундирование — к FV; дисконтирование — к PV.'],
+['int','За какое время $2 500 вырастут до $7 500 при 6% годовых?',['≈ 12 лет','≈ 18,85 года','≈ 33 года','≈ 50 лет'],1,'n = ln3/ln1,06 = 18,85 года.'],
+['tvm','Что объясняет, почему 1000 ₽ сегодня больше 1000 ₽ через год?',['Только курс валют','Возможность инвестировать (альтернативная доходность) и инфляция/риск','Налоги','Ничего — суммы равны'],1,'Деньги сегодня можно вложить; к тому же их покупательная способность падает из-за инфляции, а будущее поступление рискованно.'],
+['tvm','Как изменится PV будущей суммы при росте ставки дисконтирования?',['Увеличится','Уменьшится','Не изменится','Станет отрицательной'],1,'PV = FV/(1 + r)ⁿ: ставка в знаменателе, чем она выше, тем меньше сегодняшняя стоимость.'],
+['tvm','Ставка как «минимально приемлемая доходность» используется, например, когда:',['сравниваем «100 000 сейчас или 180 000 через 5 лет» по ставке депозита','компания решает, принимать ли проект нового завода (NPV ≥ 0 при требуемой ставке)','банк выдаёт кредит','считаем инфляцию'],1,'Минимально приемлемая (требуемая) доходность — порог для принятия инвестиционных решений; альтернативная стоимость — доходность упущенного лучшего варианта.'],
+['tvm','Что НЕ входит в четыре фундаментальных фактора стоимости денег (лекция 6)?',['Производственные возможности','Временные предпочтения потребления','Риск','Курс акций компании'],3,'Четыре фактора: производственные возможности, временные предпочтения, риск, инфляция.'],
+['tvm','Инвестиция 15 млн будет сделана через 3 года, доходность 11%. Какая степень в расчёте её стоимости через 11 лет от сегодня?',['11','3','8','14'],2,'Деньги работают с 3-го по 11-й год: 11 − 3 = 8 лет. FV = 15 млн · 1,11⁸.'],
+['tvm','Проект принимается, если:',['NPV ≥ 0','NPV < 0','IRR < 0','PV < инвестиций'],0,'Положительный NPV увеличивает благосостояние акционеров.'],
+['ann','Чем аннуитет пренумерандо отличается от постнумерандо?',['Платежи в начале периода; стоит дороже в (1 + r) раз','Платежи в конце периода; стоит дешевле','Платежи растут','Платежи бесконечны'],0,'Каждый платёж поступает на период раньше — дольше приносит проценты и меньше дисконтируется.'],
+['ann','Где на практике обычно встречается аннуитет пренумерандо?',['Купоны облигаций','Аренда и страховые взносы','Аннуитетный кредит','Ипотека с платежами в конце месяца'],1,'Аренду и страховку платят авансом — в начале периода.'],
+['ann','Текущая стоимость перпетуитета:',['\\(PMT\\cdot r\\)','\\(\\dfrac{PMT}{r}\\)','\\(PMT(1+r)^n\\)','не определена'],1,'PV = PMT/r. Будущая стоимость бесконечна, поэтому формулу FV не применяют.'],
+['ann','PV растущего перпетуитета (первый платёж CF₁ через период):',['\\(\\dfrac{CF_1}{r+g}\\)','\\(\\dfrac{CF_1}{r-g},\\ r>g\\)','\\(CF_1(r-g)\\)','\\(\\dfrac{CF_0}{r}\\)'],1,'Формула Гордона: CF₁/(r − g), работает только при r > g.'],
+['ann','30-летняя ипотека, платежи ежемесячно, ставка 2,75% годовых с ежемесячным начислением. Какие r и n подставлять?',['r = 2,75%, n = 30','r = 2,75%/12, n = 360','r = 2,75%·12, n = 30','r = 2,75%/12, n = 30'],1,'Ставка и число периодов должны соответствовать периоду платежа: месяц.'],
+['ann','Остаток долга после k-го платежа по аннуитетному кредиту равен:',['PMT·k','PV оставшихся (n − k) платежей','первоначальной сумме минус k·PMT','сумме процентов'],1,'Остаток = PMT·AF(r, n − k). Нельзя просто вычитать платежи — в них есть проценты.'],
+['ann','Приз: $6 500 в следующем году, далее рост 5% в год бессрочно; ставка 12%. PV =',['$54 167','$92 857','$130 000','$6 500'],1,'6 500/(0,12 − 0,05) = 92 857.'],
+['growth','Формула CAGR:',['\\(\\left(\\dfrac{X_{\\text{кон}}}{X_{\\text{нач}}}\\right)^{1/n}-1\\)','\\(\\dfrac{\\sum g_t}{n}\\)','\\(\\dfrac{X_{\\text{кон}}-X_{\\text{нач}}}{n}\\)','\\(\\dfrac{X_{\\text{кон}}}{X_{\\text{нач}}}\\)'],0,'CAGR — геометрический среднегодовой темп роста.'],
+['growth','Как соотносятся AAGR и CAGR?',['AAGR ≤ CAGR всегда','AAGR ≥ CAGR; равны только при постоянном темпе','Всегда равны','Не сравнимы'],1,'Среднее арифметическое ≥ среднего геометрического.'],
+['growth','Коэффициент роста выручки 1,25. Темп роста:',['1,25%','125%','25%','−25%'],2,'Темп роста = коэффициент − 1 = 0,25.'],
+['growth','Выручка: 100 → 150 → 120. AAGR и CAGR соответственно:',['15% и 9,54%','9,54% и 15%','10% и 10%','20% и 15%'],0,'Темпы +50% и −20%: AAGR = 15%; CAGR = √1,2 − 1 = 9,54%.'],
+['growth','Значения за 2020, 2021, 2022, 2023 годы. Какое n в формуле CAGR?',['4','3','2','1'],1,'n — число периодов между первым и последним значением: 2023 − 2020 = 3.'],
+];
+let currentTopic='all', qState={right:0,total:0}, examTimer=null;
+function renderQuizFilter(){
+  const btns=[['all','Все']].concat(TOPICS);
+  $('#quizFilter').innerHTML=btns.map(([k,t])=>`<button data-k="${k}" class="${k===currentTopic?'on':''}">${t} ${k==='all'?'('+QZ.length+')':'('+QZ.filter(q=>q[0]===k).length+')'}</button>`).join('');
+  $('#quizFilter').querySelectorAll('button').forEach(b=>b.onclick=()=>{stopExam();currentTopic=b.dataset.k;renderQuizFilter();renderQuiz(currentTopic,false)});
+}
+function renderQuiz(topic,shuf,list){
+  let qs=list||QZ.filter(q=>topic==='all'||q[0]===topic);
+  if(shuf)qs=shuffle(qs);
+  qState={right:0,total:qs.length,answered:0};
+  updScore();
+  $('#quizList').innerHTML=qs.map((q,i)=>{
+    const order=shuffle(q[2].map((o,j)=>j));
+    return `<div class="q" data-c="${q[3]}"><div class="qt">${i+1}. ${q[1]} <span class="pill" style="margin-left:6px">${TN[q[0]]}</span></div>${order.map(j=>`<button class="opt" data-j="${j}">${q[2][j]}</button>`).join('')}<div class="expl">${q[4]}</div></div>`}).join('');
+  $('#quizList').querySelectorAll('.q').forEach(box=>{
+    box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      if(box.classList.contains('done'))return;
+      box.classList.add('done');const c=+box.dataset.c,j=+b.dataset.j;
+      qState.answered++;
+      if(j===c){b.classList.add('right');qState.right++}else{b.classList.add('wrong');box.querySelector(`.opt[data-j="${c}"]`).classList.add('right')}
+      updScore();
+    });
+  });
+  tex($('#quizList'));
+}
+function updScore(){
+  const t=examTimer?`<span id="timer" class="mono"></span>`:'';
+  $('#qscore').innerHTML=`<span>Отвечено: <b>${qState.answered||0}</b> / ${qState.total}</span><span>Верно: <b>${qState.right}</b></span><span>${qState.answered?Math.round(qState.right/qState.answered*100)+'%':''}</span>${t}`;
+  if(examTimer)tick();
+}
+let examEnd=0;
+function startExam(){
+  stopExam();currentTopic='all';renderQuizFilter();
+  examEnd=Date.now()+15*60*1000;
+  examTimer=setInterval(tick,1000);
+  renderQuiz('all',false,shuffle(QZ).slice(0,12));
+  window.scrollTo(0,0);
+}
+function tick(){
+  const el=$('#timer');if(!el)return;
+  const s=Math.max(0,Math.round((examEnd-Date.now())/1000));
+  el.textContent='⏱ '+String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+  if(s===0){stopExam();$('#qscore').insertAdjacentHTML('beforeend','<span><b>Время вышло</b></span>')}
+}
+function stopExam(){if(examTimer){clearInterval(examTimer);examTimer=null}}
+
+/* ===================== TASKS ===================== */
+const TASKS=[
+{src:'Образец КР',t:'ratios',title:'Задача 1. Sempra — Дюпон',cond:'Рентабельность активов (ROA) компании Sempra составляет 10%, маржа прибыли (profit margin) — 2%, а ROE — 15%. Какова оборачиваемость активов компании? Каков мультипликатор собственного капитала?',
+ ans:[{l:'Оборачиваемость активов',v:5,u:'раз'},{l:'Мультипликатор СК',v:1.5,u:''}],
+ steps:[R`Дюпон: \(ROA=PM\times TATO\Rightarrow TATO=\dfrac{ROA}{PM}=\dfrac{0{,}10}{0{,}02}=\mathbf{5}\) (на 1 долл. активов — 5 долл. выручки).`,R`\(ROE=ROA\times EM\Rightarrow EM=\dfrac{ROE}{ROA}=\dfrac{0{,}15}{0{,}10}=\mathbf{1{,}5}\) (на 1 долл. СК — 1,5 долл. активов).`,R`Проверка: \(0{,}02\times5\times1{,}5=0{,}15\) ✓`]},
+{src:'Образец КР',t:'ratios',title:'Задача 2. Baker Brothers — DSO',cond:'DSO = 40 дней, годовой объём продаж $7 300 000. Каков уровень дебиторской задолженности? В году 365 дней.',
+ ans:[{l:'Receivables',v:800000,u:'$'}],
+ steps:[R`Продажи в день: \(\dfrac{7\,300\,000}{365}=20\,000\).`,R`\(DSO=\dfrac{AR}{Sales/365}\Rightarrow AR=40\times20\,000=\mathbf{800\,000}\).`]},
+{src:'Образец КР (задачи 3 и 5)',t:'tvm',title:'Задача 3. Взносы в начале года',cond:'Вы кладёте $1 000 в начале этого года, $1 500 в начале следующего и $2 000 ещё через год (в начале года). Сколько будет в конце третьего года при 10% годовых?',
+ ans:[{l:'FV в конце 3-го года',v:5346,u:'$'}],
+ steps:['Начало 1-го года = момент 0, начало 2-го = 1, начало 3-го = 2. Конец 3-го года = момент 3.',R`\(FV=1000\cdot1{,}1^3+1500\cdot1{,}1^2+2000\cdot1{,}1\)`,R`\(=1331+1815+2200=\mathbf{5346}\)`],
+ extra:'Платежи неравные, поэтому это не аннуитет — каждый поток наращиваем отдельно.'},
+{src:'Образец КР',t:'tvm',title:'Задача 4. AON — инвестиция через 3 года',cond:'AON планирует инвестировать 15 млн иен через три года. Норма доходности 11% годовых. Какова будет стоимость инвестиций через 11 лет от текущего момента?',
+ ans:[{l:'FV через 11 лет',v:34568066.55,u:'иен'}],
+ steps:[R`Деньги вкладываются в момент 3 и работают до момента 11: \(11-3=8\) лет.`,R`\(FV=15\,000\,000\cdot1{,}11^{8}=15\,000\,000\cdot2{,}30454\approx\mathbf{34\,568\,067}\) иен.`],
+ extra:'Частая ошибка — возводить в 11-ю степень.'},
+{src:'Образец КР',t:'ratios',title:'Задача 6. Petry — сколько можно занять',cond:'Оборотные активы $1 312 500, текущие обязательства $525 000, запасы $375 000. Фирма привлекает векселя к оплате (notes payable) и направляет их в запасы. Насколько можно увеличить notes payable, не опустив current ratio ниже 2,0? Каким будет quick ratio после привлечения максимума?',
+ ans:[{l:'Макс. прирост notes payable',v:262500,u:'$'},{l:'Quick ratio',v:1.1905,u:''}],
+ steps:['Деньги от векселей идут в запасы, поэтому CA и CL растут на одну и ту же сумму x.',R`\(\dfrac{1\,312\,500+x}{525\,000+x}=2\Rightarrow 1\,312\,500+x=1\,050\,000+2x\Rightarrow x=\mathbf{262\,500}\)`,R`После: \(CA=1\,575\,000,\ CL=787\,500,\ Inv=375\,000+262\,500=637\,500\).`,R`\(QR=\dfrac{1\,575\,000-637\,500}{787\,500}=\mathbf{1{,}19}\)`],
+ extra:'<div class="note">В файле «примеры_.xlsx» в quick ratio вычитаются исходные запасы 375 000 (получается 1,52). Но по условию привлечённые деньги идут именно в запасы, поэтому вычитать нужно новые запасы 637 500 → 1,19 (так и в учебнике Brigham). Стоит уточнить у преподавателя.</div>'},
+{src:'Образец КР',t:'ann',title:'Задача 7. Ипотека',cond:'Дом стоит $2 200 000. Ипотека на 30 лет, платежи в конце каждого месяца. Первоначальный взнос — 47% стоимости. Ставка 2,75% годовых, начисление ежемесячное. Какой ежемесячный платёж?',
+ ans:[{l:'Ежемесячный платёж',v:4760.09,u:'$'}],
+ steps:[R`Кредит \(=2\,200\,000\cdot(1-0{,}47)=1\,166\,000\).`,R`\(r=\dfrac{0{,}0275}{12}=0{,}0022917;\quad n=30\cdot12=360\).`,R`\(AF=\dfrac{1}{r}-\dfrac{1}{r(1+r)^{360}}=436{,}36-\dfrac{436{,}36}{2{,}2797}\approx244{,}95\)`,R`\(PMT=\dfrac{1\,166\,000}{244{,}95}\approx\mathbf{4\,760{,}09}\)`],
+ extra:'<div class="note">В файле «примеры_.xlsx» платёж считается иначе: годовой аннуитет (r = 2,75%, n = 30) делится на 12, и цена взята как 2 220 000 → ≈ $4 842 (с ценой 2 200 000 — ≈ $4 799). По условию «начисляется ежемесячно» корректен расчёт с r/12 и n = 360. Уточни у преподавателя, какой способ ожидают; на КР распиши метод явно.</div>'},
+{src:'Задачи к КР',t:'fs',title:'Задача 1. Accenture — операционный поток',cond:'Cash на конец 2013 — $55 000, на конец 2014 — $25 000. В 2014 г. инвестиции в основные средства $250 000 (Investment CF), финансовый поток +$170 000. Каков операционный денежный поток?',
+ ans:[{l:'Operating CF',v:50000,u:'$'}],
+ steps:[R`\(\Delta Cash=25\,000-55\,000=-30\,000\)`,R`\(\Delta Cash=OCF+ICF+FinCF\Rightarrow-30\,000=OCF-250\,000+170\,000\)`,R`\(OCF=\mathbf{50\,000}\)`]},
+{src:'Задачи к КР',t:'fs',title:'Задача 2. DaVita — отчёт об изменении капитала',cond:'Чистая прибыль $280 млн, 1 млрд акций в обращении балансовой стоимостью $950 млн (эмиссий и выкупа не было, привилегированных акций нет). Нераспределённая прибыль на начало года $770 млн, дивиденды $180 млн. Составьте отчёт об изменении акционерного капитала.',
+ ans:[{l:'Нераспределённая прибыль на конец',v:870,u:'млн $'},{l:'Собственный капитал на конец',v:1820,u:'млн $'}],
+ steps:['Common stock не меняется (нет эмиссии/выкупа): 950.',R`\(RE_1=RE_0+NI-Div=770+280-180=\mathbf{870}\)`,`<table><tr><th></th><th>Акции, шт.</th><th>Common stock</th><th>Retained earnings</th><th>Итого СК</th></tr><tr><td>Начало года</td><td>1 000 млн</td><td>950</td><td>770</td><td>1 720</td></tr><tr><td>+ Net income</td><td></td><td></td><td>280</td><td>280</td></tr><tr><td>− Dividends</td><td></td><td></td><td>(180)</td><td>(180)</td></tr><tr><td><b>Конец года</b></td><td>1 000 млн</td><td>950</td><td><b>870</b></td><td><b>1 820</b></td></tr></table>`],
+ extra:'Здесь «балансовая стоимость $950 млн» трактуется как статья common stock. Если в условии на КР дан общий капитал — RE считается так же, а common stock = капитал − RE.'},
+{src:'Задачи к КР',t:'ratios',title:'Задача 3. CMS Energy — ROE после рычага',cond:'Новый план: долг составит 60% капитала, проценты $300 000 в год. Привилегированных акций нет, активы = инвестированный капитал. EBIT $1 000 000, продажи $10 000 000, оборачиваемость активов 2,0, налог 34%. Какой будет ROE?',
+ ans:[{l:'ROE',v:23.1,u:'%',pct:true}],
+ steps:[R`\(TA=\dfrac{Sales}{TATO}=\dfrac{10\,000\,000}{2}=5\,000\,000\)`,R`\(E=0{,}4\cdot5\,000\,000=2\,000\,000\) (долг 3 000 000).`,R`\(EBT=1\,000\,000-300\,000=700\,000;\quad NI=700\,000\cdot(1-0{,}34)=462\,000\)`,R`\(ROE=\dfrac{462\,000}{2\,000\,000}=\mathbf{23{,}1\%}\) (было 3%).`]},
+{src:'Задачи к КР',t:'ann',title:'Задача 4. Кредит с полугодовыми платежами',cond:'Ипотечный кредит 10 млн долл., срок 7 лет, выплаты по полугодиям, ставка 13%. Рассчитать фиксированный платёж и остаток по кредиту после 11-го периода.',
+ ans:[{l:'Платёж за полугодие',v:1109404.81,u:'$'},{l:'Остаток после 11-го периода',v:2938231.46,u:'$'}],
+ steps:[R`\(r=\dfrac{13\%}{2}=6{,}5\%;\quad n=7\cdot2=14\)`,R`\(AF(6{,}5\%;14)=\dfrac{1}{0{,}065}-\dfrac{1}{0{,}065\cdot1{,}065^{14}}=15{,}3846-\dfrac{15{,}3846}{2{,}4149}=9{,}0138\)`,R`\(PMT=\dfrac{10\,000\,000}{9{,}0138}\approx\mathbf{1\,109\,405}\)`,R`Остаток после 11 платежей = PV трёх оставшихся: \(B_{11}=PMT\cdot AF(6{,}5\%;3)=1\,109\,405\cdot2{,}6485\approx\mathbf{2\,938\,231}\)`]},
+{src:'Задачи к КР',t:'int',title:'Задача 5. Утроение инвестиций',cond:'Сколько времени потребуется, чтобы $2 500 выросли в три раза до $7 500 при 6% годовых с ежегодным начислением?',
+ ans:[{l:'n',v:18.854,u:'лет'}],
+ steps:[R`\(7500=2500\cdot1{,}06^{n}\Rightarrow1{,}06^{n}=3\)`,R`\(n=\dfrac{\ln3}{\ln1{,}06}=\dfrac{1{,}0986}{0{,}05827}\approx\mathbf{18{,}85}\) года.`]},
+{src:'Задачи к КР',t:'ann',title:'Задача 6. Optimal Insurance — отсроченная рента',cond:'Рента под 10% годовых: равные ежегодные платежи, начиная с конца 10-го года, всего 10 платежей. Первоначальная инвестиция $100 000. Какова сумма ежегодного платежа?',
+ ans:[{l:'Ежегодный платёж',v:38374.51,u:'$'}],
+ steps:['Первый платёж в момент 10 → оцениваем ренту на момент 9 (за период до первого платежа).',R`Наращиваем инвестицию до момента 9: \(100\,000\cdot1{,}1^{9}=235\,794{,}77\)`,R`\(AF(10\%;10)=6{,}1446\)`,R`\(PMT=\dfrac{235\,794{,}77}{6{,}1446}\approx\mathbf{38\,374{,}51}\)`]},
+{src:'Задачи к КР',t:'ann',title:'Задача 7. Кредит с меняющимися платежами',cond:'Кредит $50 000 под 7% годовых погашается ежегодными платежами по $8 000 первые 3 года, затем по $6 000 до полной выплаты. Сколько всего платежей и какова сумма последнего?',
+ ans:[{l:'Всего платежей',v:11,u:'шт.'},{l:'Последний платёж',v:5493.41,u:'$'}],
+ steps:[R`Остаток после 3 лет: \(B_3=50\,000\cdot1{,}07^{3}-8000\cdot\dfrac{1{,}07^{3}-1}{0{,}07}=61\,252{,}15-25\,719{,}20=35\,532{,}95\)`,R`Число платежей по 6000: \(n=-\dfrac{\ln\left(1-\frac{35\,532{,}95\cdot0{,}07}{6000}\right)}{\ln1{,}07}\approx7{,}91\)`,'Значит, 7 полных платежей по 6 000 (годы 4–10) и 8-й — неполный (год 11).',R`Остаток после 10-го года: \(35\,532{,}95\cdot1{,}07^{7}-6000\cdot\dfrac{1{,}07^{7}-1}{0{,}07}=57\,058{,}15-51\,924{,}13=5\,134{,}03\)`,R`Последний платёж (год 11) \(=5\,134{,}03\cdot1{,}07\approx\mathbf{5\,493{,}41}\). Всего платежей: \(3+8=\mathbf{11}\).`]},
+{src:'Примеры к КР',t:'ann',title:'Доп. задача. Пенсия Алексея — растущий аннуитет',cond:'Доход в конце года $40 000, растёт с инфляцией 3% в год. Алексей ежегодно откладывает 5% дохода. Сейчас ему 30, пенсия в 70 (40 лет). Доходность портфеля 15%. Сколько он накопит?',
+ ans:[{l:'Накопления к 70 годам',v:4410025.14,u:'$'}],
+ steps:[R`\(CF_1=40\,000\cdot5\%=2000,\ g=3\%,\ r=15\%,\ n=40\)`,R`\(PV=\dfrac{2000}{0{,}15-0{,}03}\left[1-\left(\dfrac{1{,}03}{1{,}15}\right)^{40}\right]=16\,666{,}67\cdot0{,}98782\approx16\,463{,}70\)`,R`\(FV=PV\cdot1{,}15^{40}=16\,463{,}70\cdot267{,}86\approx\mathbf{4\,410\,025}\)`]},
+{src:'Семинар 3',t:'int',title:'EAR при разной частоте начисления',cond:'Номинальная ставка 8%. Найдите EAR при ежеквартальном и ежемесячном начислении.',
+ ans:[{l:'EAR (квартал)',v:8.2432,u:'%',pct:true},{l:'EAR (месяц)',v:8.29995,u:'%',pct:true}],
+ steps:[R`Квартал: \(\left(1+\dfrac{0{,}08}{4}\right)^4-1=1{,}02^4-1=\mathbf{8{,}24\%}\)`,R`Месяц: \(\left(1+\dfrac{0{,}08}{12}\right)^{12}-1=\mathbf{8{,}30\%}\)`,R`Для справки: полугодие 8,16%, день 8,33%, непрерывно \(e^{0{,}08}-1=8{,}33\%\).`]},
+{src:'Семинар 3',t:'ann',title:'Аннуитет Максвелла (пренумерандо)',cond:'Аннуитет: $230 в год в течение 18 лет, выплаты в начале каждого года. Сколько стоит этот аннуитет при эффективной ставке 13%?',
+ ans:[{l:'PV',v:1777.69,u:'$'}],
+ steps:[R`\(AF(13\%;18)=\dfrac{1}{0{,}13}-\dfrac{1}{0{,}13\cdot1{,}13^{18}}=7{,}6923-\dfrac{7{,}6923}{9{,}0243}=6{,}8399\)`,R`\(PV_{ann}=230\cdot6{,}8399=1573{,}18\)`,R`\(PV_{due}=1573{,}18\cdot1{,}13=\mathbf{1777{,}69}\)`]},
+{src:'Семинар 3',t:'ann',title:'Зарплата Майка — растущий аннуитет',cond:'Майку 30 лет, зарплата в следующем году $40 000, растёт на 5% в год до пенсии в 60 лет. Ставка дисконтирования 8%. PV будущих зарплат?',
+ ans:[{l:'PV',v:760662.53,u:'$'}],
+ steps:[R`\(CF_1=40\,000,\ g=5\%,\ r=8\%,\ n=30\)`,R`\(PV=\dfrac{40\,000}{0{,}08-0{,}05}\left[1-\left(\dfrac{1{,}05}{1{,}08}\right)^{30}\right]=1\,333\,333\cdot(1-0{,}4295)\approx\mathbf{760\,663}\)`]},
+{src:'Семинар 3',t:'ann',title:'Выбор приза при 12%',cond:'A: $100 000 сейчас. B: $180 000 через 5 лет. C: $11 400 в год бессрочно. D: $19 000 в год в течение 10 лет. E: $6 500 в следующем году с ростом 5% бессрочно. Ставка 12%. Какой приз ценнее? Введите PV лучшего.',
+ ans:[{l:'PV лучшего приза',v:107354.24,u:'$'}],
+ steps:[R`A \(=100\,000\)`,R`B \(=\dfrac{180\,000}{1{,}12^5}=102\,137\)`,R`C \(=\dfrac{11\,400}{0{,}12}=95\,000\)`,R`D \(=19\,000\cdot AF(12\%;10)=19\,000\cdot5{,}6502=\mathbf{107\,354}\)`,R`E \(=\dfrac{6500}{0{,}12-0{,}05}=92\,857\)`,'Лучший — <b>D</b>.']},
+{src:'Семинар 3',t:'ann',title:'Платёж по кредиту',cond:'Компания занимает $50 000 на 5 лет под 9%, погашение пятью равными платежами в конце года. Найдите платёж.',
+ ans:[{l:'PMT',v:12854.62,u:'$'}],
+ steps:[R`\(AF(9\%;5)=\dfrac{1}{0{,}09}-\dfrac{1}{0{,}09\cdot1{,}09^5}=11{,}1111-\dfrac{11{,}1111}{1{,}5386}=3{,}8897\)`,R`\(PMT=\dfrac{50\,000}{3{,}8897}\approx\mathbf{12\,854{,}62}\)`]},
+{src:'Лекция 5',t:'int',title:'Удвоение суммы',cond:'Сколько времени нужно, чтобы удвоить $5 000 при 12% годовых (сложные проценты)?',
+ ans:[{l:'n',v:6.1163,u:'лет'}],
+ steps:[R`\(2=1{,}12^{n}\Rightarrow n=\dfrac{\ln2}{\ln1{,}12}=\dfrac{0{,}6931}{0{,}1133}\approx\mathbf{6{,}12}\) года.`,'Правило 72: 72/12 = 6 — быстрая проверка.']},
+];
+let taskTopic='all';
+function renderTaskFilter(){
+  const srcs=['all',...new Set(TASKS.map(t=>t.src.replace(/ \(.*\)/,'')))];
+  $('#taskFilter').innerHTML=srcs.map(s=>`<button class="${s===taskTopic?'on':''}" data-s="${s}">${s==='all'?'Все ('+TASKS.length+')':s}</button>`).join('');
+  $('#taskFilter').querySelectorAll('button').forEach(b=>b.onclick=()=>{taskTopic=b.dataset.s;renderTaskFilter();renderTasks()});
+}
+function checkVal(inp,v){
+  let x=parseNum(inp);if(isNaN(x))return null;
+  const tol=Math.max(Math.abs(v)*0.005,0.005);
+  return Math.abs(x-v)<=tol;
+}
+function ansStr(a){return a.pct?fmt(a.v,2)+'%':fmt(a.v,a.v>100?2:4).replace(/,?0+$/,'')+' '+a.u}
+function renderTasks(){
+  const list=TASKS.map((t,i)=>({t,i})).filter(o=>taskTopic==='all'||o.t.src.replace(/ \(.*\)/,'')===taskTopic);
+  $('#taskList').innerHTML=list.map(({t,i})=>`<div class="task" id="task${i}">
+   <h3>${t.title}</h3><div><span class="pill red">${t.src}</span><span class="pill">${TN[t.t]}</span></div>
+   <p>${t.cond}</p>
+   <div class="row">${t.ans.map((a,k)=>`<div class="fld">${a.l}${a.u?', '+a.u:''}<input data-k="${k}" placeholder="ответ"></div>`).join('')}
+   <button class="small" onclick="chkTask(${i})">Проверить</button><button class="small ghost" onclick="document.getElementById('task${i}').classList.toggle('open')">Решение</button></div>
+   <div class="fb" id="fb${i}"></div>
+   <div class="sol"><ol class="steps">${t.steps.map(s=>`<li>${s}</li>`).join('')}</ol>${t.extra?`<div>${t.extra.startsWith('<')?t.extra:'<div class="note blue">'+t.extra+'</div>'}</div>`:''}
+   <p>Ответ: ${t.ans.map(a=>`<span class="ans">${a.l}: ${ansStr(a)}</span>`).join('; ')}</p></div></div>`).join('');
+  tex($('#taskList'));
+}
+function chkTask(i){
+  const t=TASKS[i],box=document.getElementById('task'+i);
+  const res=t.ans.map((a,k)=>checkVal(box.querySelector(`input[data-k="${k}"]`).value,a.v));
+  const fb=document.getElementById('fb'+i);
+  if(res.some(r=>r===null)){fb.className='fb bad';fb.textContent='Заполни все поля числами.';return}
+  if(res.every(Boolean)){fb.className='fb good';fb.textContent='✓ Верно!'}
+  else{fb.className='fb bad';fb.textContent='✕ '+t.ans.map((a,k)=>a.l+': '+(res[k]?'верно':'неверно')).join(' · ')+'. Попробуй ещё или открой решение.'}
+}
+
+/* ===================== TRAINER ===================== */
+const nf=(x,d=0)=>fmt(x,d);
+// LaTeX number: 1 234,56 -> 1\,234{,}56
+const L=(x,d=2)=>fmt(x,d).replace(',','{,}').replace(/[\u00a0\u202f ]/g,'\\,');
+const Lr=x=>String(+x.toFixed(6)).replace('.','{,}');
+const M=s=>'\\('+s+'\\)';
+const GEN={
+ fv:['FV — сложные проценты (компаундирование)',()=>{const pv=rnd(1000,50000,500),r=rnd(3,15)/100,n=rnd(2,15);const v=pv*Math.pow(1+r,n);
+   return{q:`Вы вкладываете ${nf(pv)} под ${r*100}% годовых (ежегодное начисление) на ${n} лет. Какая сумма будет на счёте?`,a:v,u:'',s:[M(`FV=PV(1+r)^n=${L(pv,0)}\\cdot${Lr(1+r)}^{${n}}=${L(v)}`)]}}],
+ pv:['PV — дисконтирование',()=>{const fv=rnd(5000,200000,1000),r=rnd(4,16)/100,n=rnd(2,12);const v=fv/Math.pow(1+r,n);
+   return{q:`Сколько нужно вложить сегодня под ${r*100}%, чтобы через ${n} лет получить ${nf(fv)}?`,a:v,u:'',s:[M(`PV=\\dfrac{FV}{(1+r)^n}=\\dfrac{${L(fv,0)}}{${Lr(1+r)}^{${n}}}=${L(v)}`)]}}],
+ simple:['Простые vs сложные проценты',()=>{const pv=rnd(1000,20000,500),r=rnd(5,20)/100,n=rnd(2,8);const s=pv*(1+r*n),c=pv*Math.pow(1+r,n);
+   return{q:`${nf(pv)} размещены на ${n} лет под ${r*100}% годовых. На сколько FV при сложных процентах больше, чем при простых?`,a:c-s,u:'',s:['Простые: '+M(`${L(pv,0)}\\cdot(1+${Lr(r)}\\cdot${n})=${L(s)}`),'Сложные: '+M(`${L(pv,0)}\\cdot${Lr(1+r)}^{${n}}=${L(c)}`),'Разница = '+M(L(c-s))]}}],
+ deferred:['Инвестиция через t₁, оценка в t₂',()=>{const a=rnd(1,15)*1e6,r=rnd(5,14)/100,t1=rnd(1,5),t2=t1+rnd(3,10);const v=a*Math.pow(1+r,t2-t1);
+   return{q:`Компания инвестирует ${nf(a)} через ${t1} г. Доходность ${r*100}% годовых. Какова стоимость инвестиции через ${t2} лет от сегодня?`,a:v,u:'',s:['Деньги работают '+M(`${t2}-${t1}=${t2-t1}`)+' лет',M(`FV=${L(a,0)}\\cdot${Lr(1+r)}^{${t2-t1}}=${L(v)}`)]}}],
+ ear:['EAR — эффективная ставка',()=>{const r=rnd(4,24)/100,m=pick([2,4,12,365]);const v=Math.pow(1+r/m,m)-1;const nm={2:'раз в полгода',4:'ежеквартально',12:'ежемесячно',365:'ежедневно'};
+   return{q:`Номинальная ставка ${Math.round(r*100)}% годовых, проценты начисляются ${nm[m]}. Найдите EAR (в %).`,a:v*100,u:'%',s:[M(`EAR=\\left(1+\\dfrac{${Lr(r)}}{${m}}\\right)^{${m}}-1=${L(v*100,4)}\\%`)]}}],
+ cont:['Непрерывное начисление',()=>{const r=rnd(3,20)/100;const v=Math.exp(r)-1;
+   return{q:`Найдите EAR (в %) при номинальной ставке ${Math.round(r*100)}% и непрерывном начислении.`,a:v*100,u:'%',s:[M(`EAR=e^{${Lr(r)}}-1=${L(v*100,4)}\\%`)]}}],
+ nper:['Сколько лет до цели (n)',()=>{const pv=rnd(1000,10000,500),k=pick([2,3,4,1.5]),r=rnd(4,15)/100;const v=Math.log(k)/Math.log(1+r);
+   return{q:`За сколько лет ${nf(pv)} вырастут до ${nf(pv*k)} при ${r*100}% годовых?`,a:v,u:'лет',s:[M(`(1+r)^n=${Lr(k)}\\Rightarrow n=\\dfrac{\\ln ${Lr(k)}}{\\ln ${Lr(1+r)}}=${L(v,3)}`)]}}],
+ rate:['Найти ставку r',()=>{const pv=rnd(1000,10000,500),n=rnd(3,12),r=rnd(4,15)/100;const fv=Math.round(pv*Math.pow(1+r,n));const v=(Math.pow(fv/pv,1/n)-1)*100;
+   return{q:`Вложив ${nf(pv)}, через ${n} лет вы получили ${nf(fv)}. Какова годовая доходность (в %)?`,a:v,u:'%',s:[M(`r=\\left(\\dfrac{${L(fv,0)}}{${L(pv,0)}}\\right)^{1/${n}}-1=${L(v,3)}\\%`)]}}],
+ loan:['Платёж по кредиту (аннуитет)',()=>{const pv=rnd(10,500)*1000,r=rnd(5,15)/100,n=rnd(3,15);const v=pv/AF(r,n);
+   return{q:`Кредит ${nf(pv)} на ${n} лет под ${r*100}%, равные платежи в конце года. Найдите платёж.`,a:v,u:'',s:[M(`AF=\\dfrac{1}{${Lr(r)}}-\\dfrac{1}{${Lr(r)}\\cdot${Lr(1+r)}^{${n}}}=${L(AF(r,n),4)}`),M(`PMT=\\dfrac{${L(pv,0)}}{${L(AF(r,n),4)}}=${L(v)}`)]}}],
+ mortgage:['Ипотека с ежемесячными платежами',()=>{const price=rnd(30,300)*10000,dp=rnd(10,50)/100,y=pick([10,15,20,25,30]),r=rnd(20,120)/1000;const Lo=price*(1-dp),i=r/12,n=y*12,v=Lo/AF(i,n);
+   return{q:`Квартира стоит ${nf(price)}. Первоначальный взнос ${Math.round(dp*100)}%, остальное — ипотека на ${y} лет, платежи в конце каждого месяца, ставка ${fmt(r*100,1)}% годовых с ежемесячным начислением. Ежемесячный платёж?`,a:v,u:'',s:['Кредит: '+M(`${L(price,0)}\\cdot${Lr(1-dp)}=${L(Lo,0)}`),M(`r=\\dfrac{${Lr(r)}}{12}=${L(i*100,4)}\\%,\\quad n=${n}`),M(`AF=${L(AF(i,n),3)};\\quad PMT=\\dfrac{${L(Lo,0)}}{${L(AF(i,n),3)}}=${L(v)}`)]}}],
+ balance:['Остаток долга после k платежей',()=>{const pv=rnd(1,20)*1e6,y=rnd(4,10),m=pick([1,2]),Rr=rnd(6,16)/100;const r=Rr/m,n=y*m,k=rnd(2,n-2),p=pv/AF(r,n),v=p*AF(r,n-k);
+   return{q:`Кредит ${nf(pv)} на ${y} лет под ${Rr*100}%, платежи ${m===2?'раз в полгода':'раз в год'}. Найдите остаток долга после ${k}-го платежа.`,a:v,u:'',s:[M(`r=${L(r*100,2)}\\%,\\ n=${n};\\quad PMT=\\dfrac{PV}{AF(r,n)}=${L(p)}`),M(`B_{${k}}=PMT\\cdot AF(r,${n-k})=${L(p)}\\cdot${L(AF(r,n-k),4)}=${L(v)}`)]}}],
+ due:['PV аннуитета пренумерандо',()=>{const c=rnd(100,5000,50),r=rnd(5,15)/100,n=rnd(4,20);const v=c*AF(r,n)*(1+r);
+   return{q:`Аннуитет платит ${nf(c)} в начале каждого года в течение ${n} лет. Ставка ${r*100}%. Сколько он стоит сегодня?`,a:v,u:'',s:[M(`PV_{ann}=${L(c,0)}\\cdot${L(AF(r,n),4)}=${L(c*AF(r,n))}`),M(`PV_{due}=PV_{ann}\\cdot${Lr(1+r)}=${L(v)}`)]}}],
+ fvann:['FV обычного аннуитета',()=>{const c=rnd(500,10000,100),r=rnd(4,14)/100,n=rnd(3,30);const v=c*FVAF(r,n);
+   return{q:`Вы откладываете ${nf(c)} в конце каждого года в течение ${n} лет под ${r*100}%. Сколько накопите?`,a:v,u:'',s:[M(`FV=PMT\\cdot\\dfrac{(1+r)^n-1}{r}=${L(c,0)}\\cdot${L(FVAF(r,n),4)}=${L(v)}`)]}}],
+ unequal:['Неравные взносы в начале года (FV)',()=>{const r=rnd(5,12)/100,c=[rnd(1,3)*500,rnd(2,4)*500,rnd(3,5)*500];const v=c[0]*Math.pow(1+r,3)+c[1]*Math.pow(1+r,2)+c[2]*(1+r);
+   return{q:`Вы кладёте ${nf(c[0])} в начале этого года, ${nf(c[1])} в начале следующего и ${nf(c[2])} в начале третьего года. Ставка ${r*100}%. Сколько будет в конце третьего года?`,a:v,u:'',s:[M(`${c[0]}\\cdot${Lr(1+r)}^3+${c[1]}\\cdot${Lr(1+r)}^2+${c[2]}\\cdot${Lr(1+r)}=${L(v)}`)]}}],
+ perp:['Перпетуитет / растущий перпетуитет',()=>{const c=rnd(1,20)*1000,r=rnd(8,15)/100,g=pick([0,0.02,0.03,0.04,0.05]);const v=c/(r-g);
+   return{q:g?`Поток ${nf(c)} в следующем году, далее растёт на ${g*100}% в год бессрочно. Ставка ${r*100}%. PV?`:`Бессрочный поток ${nf(c)} в год (с конца 1-го года), ставка ${r*100}%. PV?`,a:v,u:'',s:[g?M(`PV=\\dfrac{CF_1}{r-g}=\\dfrac{${c}}{${Lr(r)}-${Lr(g)}}=${L(v)}`):M(`PV=\\dfrac{PMT}{r}=\\dfrac{${c}}{${Lr(r)}}=${L(v)}`)]}}],
+ defrent:['Отсроченная рента',()=>{const inv=rnd(5,50)*10000,r=rnd(6,12)/100,t=rnd(3,10),n=rnd(5,15);const fv=inv*Math.pow(1+r,t-1),v=fv/AF(r,n);
+   return{q:`Инвестиция ${nf(inv)} сегодня. Рента под ${r*100}% выплачивает равные ежегодные платежи, начиная с конца ${t}-го года, всего ${n} платежей. Сумма платежа?`,a:v,u:'',s:['Нарастить до момента '+(t-1)+': '+M(`${L(inv,0)}\\cdot${Lr(1+r)}^{${t-1}}=${L(fv)}`),M(`PMT=\\dfrac{${L(fv)}}{AF(${Lr(r*100)}\\%;${n})}=\\dfrac{${L(fv)}}{${L(AF(r,n),4)}}=${L(v)}`)]}}],
+ cagr:['CAGR',()=>{const a=rnd(100,1000,10),n=rnd(2,8),g=rnd(-5,25)/100;const b=Math.round(a*Math.pow(1+g,n));const v=(Math.pow(b/a,1/n)-1)*100;const y0=2015+rnd(0,5);
+   return{q:`Выручка в ${y0} г. — ${nf(a)}, в ${y0+n} г. — ${nf(b)}. Найдите CAGR (в %).`,a:v,u:'%',s:[M(`n=${y0+n}-${y0}=${n}`),M(`CAGR=\\left(\\dfrac{${b}}{${a}}\\right)^{1/${n}}-1=${L(v,3)}\\%`)]}}],
+ aagr:['AAGR по ряду',()=>{let x=[rnd(100,500,10)];for(let i=0;i<3;i++)x.push(Math.round(x[i]*(1+rnd(-15,35)/100)));const gs=x.slice(1).map((v,i)=>v/x[i]-1);const v=gs.reduce((a,b)=>a+b,0)/gs.length*100;
+   return{q:`Продажи по годам: ${x.map(v=>nf(v)).join(' → ')}. Найдите AAGR (в %).`,a:v,u:'%',s:['Темпы: '+gs.map(g=>fmt(g*100,2)+'%').join('; '),M(`AAGR=\\dfrac{\\sum g_t}{3}=${L(v,3)}\\%`),'Для сравнения '+M(`CAGR=${L((Math.pow(x[3]/x[0],1/3)-1)*100,3)}\\%`)]}}],
+ dso:['DSO ↔ дебиторская задолженность',()=>{const s=rnd(1,50)*365000,d=rnd(20,90);if(Math.random()<.5){const v=s/365*d;return{q:`DSO = ${d} дней, годовые продажи ${nf(s)} (365 дней). Найдите дебиторскую задолженность.`,a:v,u:'',s:[M(`\\dfrac{Sales}{365}=${L(s/365,0)}`),M(`AR=${d}\\cdot${L(s/365,0)}=${L(v,0)}`)]}}else{const ar=s/365*d;return{q:`Дебиторская задолженность ${nf(ar)}, годовые продажи ${nf(s)} (365 дней). Найдите DSO.`,a:d,u:'дней',s:[M(`DSO=\\dfrac{${L(ar,0)}}{${L(s/365,0)}}=${d}`)]}}}],
+ dupont:['Дюпон: найти TATO и EM',()=>{const pm=rnd(2,12)/100,ta=rnd(5,30)/10,em=rnd(12,30)/10;const roa=pm*ta,roe=roa*em;const ask=pick(['ta','em']);
+   return ask==='ta'?{q:`ROA = ${fmt(roa*100,2)}%, profit margin = ${fmt(pm*100,0)}%. Найдите оборачиваемость активов.`,a:ta,u:'раз',s:[M(`TATO=\\dfrac{ROA}{PM}=\\dfrac{${L(roa*100,2)}}{${L(pm*100,0)}}=${L(ta)}`)]}:{q:`ROE = ${fmt(roe*100,2)}%, ROA = ${fmt(roa*100,2)}%. Найдите мультипликатор собственного капитала.`,a:em,u:'',s:[M(`EM=\\dfrac{ROE}{ROA}=\\dfrac{${L(roe*100,2)}}{${L(roa*100,2)}}=${L(em)}`)]}}],
+ petry:['Max notes payable при CR ≥ X',()=>{const cl=rnd(200,800)*1000,cr=rnd(28,40)/10,ca=cl*cr,target=pick([1.5,2,2.5]);const inv=Math.round(ca*rnd(20,40)/100);const x=(ca-target*cl)/(target-1);const qr=(ca-inv)/(cl+x);
+   return{q:`CA = ${nf(ca)}, CL = ${nf(cl)}, запасы = ${nf(inv)}. Фирма берёт векселя к оплате и покупает на них запасы. Насколько можно увеличить notes payable, чтобы current ratio не упал ниже ${fmt(target,1)}? (ответ — сумма)`,a:x,u:'',s:[M(`\\dfrac{CA+x}{CL+x}=${Lr(target)}\\Rightarrow x=\\dfrac{CA-${Lr(target)}\\cdot CL}{${Lr(target)}-1}=${L(x,0)}`),'Quick ratio после: '+M(`\\dfrac{CA+x-(Inv+x)}{CL+x}=${L(qr,3)}`)]}}],
+ lev:['ROE при заданном долге (CMS-тип)',()=>{const s=rnd(2,20)*1e6,tato=pick([1.5,2,2.5,3]),dr=pick([.3,.4,.5,.6]),ebitm=rnd(6,15)/100,kd=rnd(6,12)/100,t=pick([.2,.3,.34,.4]);const ta=s/tato,d=ta*dr,e=ta-d,ebit=s*ebitm,int=d*kd,ni=(ebit-int)*(1-t),v=ni/e*100;
+   return{q:`Продажи ${nf(s)}, оборачиваемость активов ${fmt(tato,1)}, активы = инвестированный капитал, доля долга ${dr*100}%, ставка по долгу ${fmt(kd*100,0)}%, EBIT = ${nf(ebit)}, налог ${Math.round(t*100)}%. Найдите ROE (в %).`,a:v,u:'%',s:[M(`TA=${L(ta,0)};\\ D=${L(d,0)};\\ E=${L(e,0)}`),M(`Int=${L(int,0)};\\ EBT=${L(ebit-int,0)};\\ NI=${L(ni,0)}`),M(`ROE=\\dfrac{NI}{E}=${L(v,3)}\\%`)]}}],
+ ocf:['Операционный денежный поток',()=>{const c0=rnd(10,100)*1000,c1=rnd(10,100)*1000,icf=-rnd(50,400)*1000,fcf=rnd(-100,250)*1000;const v=(c1-c0)-icf-fcf;
+   return{q:`Cash на начало года ${nf(c0)}, на конец ${nf(c1)}. Инвестиционный поток ${nf(icf)}, финансовый ${nf(fcf)}. Найдите операционный поток.`,a:v,u:'',s:[M(`\\Delta Cash=${L(c1-c0,0)}=OCF+(${L(icf,0)})+(${L(fcf,0)})`),M(`OCF=${L(v,0)}`)]}}],
+ re:['Нераспределённая прибыль на конец',()=>{const re=rnd(100,2000,10),ni=rnd(-50,500,10),dv=rnd(0,300,10);const v=re+ni-dv;
+   return{q:`RE на начало ${nf(re)}, чистая прибыль ${nf(ni)}, дивиденды ${nf(dv)}. Нераспределённая прибыль на конец?`,a:v,u:'',s:[M(`RE_1=${re}+(${ni})-${dv}=${v}`)]}}],
+};
+let trCur=null,trStat=store.get('trStat',{ok:0,all:0});
+function initTrainer(){
+  $('#trType').innerHTML='<option value="any">🎲 Любой тип (случайно)</option>'+Object.entries(GEN).map(([k,[t]])=>`<option value="${k}">${t}</option>`).join('');
+  newTrainer();
+}
+function newTrainer(){
+  let k=$('#trType').value;if(k==='any')k=pick(Object.keys(GEN));
+  trCur=GEN[k][1]();trCur.k=k;
+  $('#trBox').innerHTML=`<h3>${GEN[k][0]}</h3><p>${trCur.q}</p><div class="row"><div class="fld">Ответ${trCur.u?', '+trCur.u:''}<input id="trIn" placeholder="число"></div><button class="small" onclick="chkTr()">Проверить</button><button class="small ghost" onclick="$('#trBox').classList.toggle('open')">Решение</button><button class="small ghost" onclick="newTrainer()">Следующая →</button></div><div class="fb" id="trFb"></div><div class="sol"><ol class="steps">${trCur.s.map(s=>`<li>${s}</li>`).join('')}</ol><p>Ответ: <span class="ans">${fmt(trCur.a,trCur.u==='%'?3:2)}${trCur.u==='%'?'%':' '+trCur.u}</span></p></div>`;
+  $('#trBox').classList.remove('open');
+  tex($('#trBox'));
+  const inp=$('#trIn');inp.addEventListener('keydown',e=>{if(e.key==='Enter')chkTr()});
+  updTrStat();
+}
+function chkTr(){
+  const r=checkVal($('#trIn').value,trCur.a);const fb=$('#trFb');
+  if(r===null){fb.className='fb bad';fb.textContent='Введи число.';return}
+  if(!trCur.done){trCur.done=1;trStat.all++;if(r)trStat.ok++;store.set('trStat',trStat);updTrStat()}
+  fb.className='fb '+(r?'good':'bad');fb.textContent=r?'✓ Верно! Жми «Следующая».':'✕ Неверно. Открой решение и сравни шаги.';
+  if(!r)$('#trBox').classList.add('open');
+}
+function updTrStat(){$('#trStat').textContent=`Решено верно: ${trStat.ok} из ${trStat.all}`}
+
+/* ===================== CALCULATORS ===================== */
+function tvmF(pv,pmt,fv,n,i,t){ // excel convention: returns residual
+  if(i===0)return pv+pmt*n+fv;
+  const q=Math.pow(1+i,n);return pv*q+pmt*(1+i*t)*(q-1)/i+fv;
+}
+function calcTVM(){
+  const sv=$('#tvSolve').value,R=parseNum($('#tvR').value)/100,n=parseNum($('#tvN').value),m=parseNum($('#tvM').value)||1,t=+$('#tvT').value;
+  let pv=parseNum($('#tvPV').value)||0,pmt=parseNum($('#tvPMT').value)||0,fv=parseNum($('#tvFV').value)||0;const i=R/m;let out='';
+  if(sv==='fv'){fv=-(tvmF(pv,pmt,0,n,i,t));out=`FV = ${fmt(fv,2)}`}
+  else if(sv==='pv'){const q=Math.pow(1+i,n);pv=-(pmt*(1+i*t)*(i?(q-1)/i:n)+fv)/(i?q:1);out=`PV = ${fmt(pv,2)}`}
+  else if(sv==='pmt'){const q=Math.pow(1+i,n);pmt=-(pv*q+fv)/((1+i*t)*(i?(q-1)/i:n));out=`PMT = ${fmt(pmt,2)} за период`}
+  else if(sv==='n'){let lo=0,hi=5000;const f=x=>tvmF(pv,pmt,fv,x,i,t);if(f(lo)*f(hi)>0){out='Нет решения — проверь знаки (вложение со знаком «−»).'}else{for(let k=0;k<200;k++){const mid=(lo+hi)/2;if(f(lo)*f(mid)<=0)hi=mid;else lo=mid}out=`n = ${fmt(lo,4)} периодов (${fmt(lo/m,4)} лет)`}}
+  else if(sv==='r'){let lo=-0.99,hi=10;const f=x=>tvmF(pv,pmt,fv,n,x,t);if(f(lo+1e-9)*f(hi)>0){out='Нет решения — проверь знаки.'}else{for(let k=0;k<300;k++){const mid=(lo+hi)/2;if(f(lo+1e-9)*f(mid)<=0)hi=mid;else lo=mid}out=`r за период = ${fmt(lo*100,4)}%\nНоминальная годовая = ${fmt(lo*m*100,4)}%\nEAR = ${fmt((Math.pow(1+lo,m)-1)*100,4)}%`}}
+  $('#tvRes').textContent=out+`\n(ставка за период ${fmt(i*100,4)}%, n = ${n})`;
+}
+function calcEAR(){
+  const r=parseNum($('#eR').value)/100,m=parseNum($('#eM').value),p=parseNum($('#eP').value),t=parseNum($('#eT').value);
+  const ear=Math.pow(1+r/m,m)-1;
+  $('#eRes').textContent=`EAR = ${fmt(ear*100,4)}%\nНепрерывно: ${fmt((Math.exp(r)-1)*100,4)}%\nFV (сложные, m=${m}) = ${fmt(p*Math.pow(1+r/m,m*t),2)}\nFV (сложные, m=1) = ${fmt(p*Math.pow(1+r,t),2)}\nFV (простые) = ${fmt(p*(1+r*t),2)}`;
+}
+function calcGrowth(){
+  const x=$('#gS').value.split(/[\s;]+/).map(parseNum).filter(v=>!isNaN(v));
+  if(x.length<2){$('#gRes').textContent='Нужно минимум 2 значения';return}
+  const g=x.slice(1).map((v,i)=>v/x[i]-1);const aagr=g.reduce((a,b)=>a+b,0)/g.length;const n=x.length-1;const cagr=Math.pow(x[n]/x[0],1/n)-1;
+  $('#gRes').textContent=g.map((v,i)=>`${i+1}: коэфф. ${fmt(1+v,4)}, темп ${fmt(v*100,2)}%`).join('\n')+`\n\nAAGR = ${fmt(aagr*100,3)}%\nCAGR = ${fmt(cagr*100,3)}%  (n = ${n})`;
+}
+function calcAnn(){
+  const c=parseNum($('#aC').value),r=parseNum($('#aR').value)/100,n=parseNum($('#aN').value),g=(parseNum($('#aG').value)||0)/100;
+  let s=`AF(r, n) = ${fmt(AF(r,n),5)}\nPV обычного аннуитета = ${fmt(c*AF(r,n),2)}\nPV пренумерандо = ${fmt(c*AF(r,n)*(1+r),2)}\nFV обычного = ${fmt(c*FVAF(r,n),2)}\nFV пренумерандо = ${fmt(c*FVAF(r,n)*(1+r),2)}\nPV перпетуитета = ${fmt(c/r,2)}`;
+  if(g){s+=`\nPV растущего аннуитета = ${fmt(c/(r-g)*(1-Math.pow((1+g)/(1+r),n)),2)}\nPV растущего перпетуитета = ${r>g?fmt(c/(r-g),2):'нет (r ≤ g)'}`}
+  $('#aRes').textContent=s;
+}
+const RIN=[['cash','Cash + MS',10],['ar','Receivables',375],['inv','Inventories',615],['ca','Current assets',1000],['cl','Current liabilities',310],['np','Notes payable',110],['ltd','Long-term debt',750],['fa','Net fixed assets',1000],['ta','Total assets',2000],['eq','Common equity',940],['sales','Sales',3000],['cogs','COGS',2616.2],['ebit','EBIT',283.8],['int','Interest',88],['tax','Tax rate, %',40],['ni','Net income',117.5],['sh','Акций, шт.',50],['price','Цена акции',23.06]];
+function initRatios(){$('#ratioIn').innerHTML=RIN.map(([k,l,v])=>`<div class="fld">${l}<input id="ri_${k}" value="${v}"></div>`).join('')}
+function calcRatios(){
+  const g=k=>parseNum($('#ri_'+k).value);const v=Object.fromEntries(RIN.map(([k])=>[k,g(k)]));
+  const debt=(v.np||0)+(v.ltd||0),nopat=v.ebit*(1-v.tax/100),eps=v.ni/v.sh;
+  const rows=[['Ликвидность','Current ratio',v.ca/v.cl,'x'],['','Quick ratio',(v.ca-v.inv)/v.cl,'x'],['','Cash ratio',v.cash/v.cl,'x'],
+   ['Активы','Inventory turnover (Sales/Inv)',v.sales/v.inv,'x'],['','DSO',v.ar/(v.sales/365),'дн.'],['','Fixed assets turnover',v.sales/v.fa,'x'],['','Total assets turnover',v.sales/v.ta,'x'],
+   ['Долг','Debt / total capital',debt/(debt+v.eq),'%'],['','D/E',debt/v.eq,'x'],['','TIE',v.ebit/v.int,'x'],['','Equity multiplier',v.ta/v.eq,'x'],
+   ['Рентабельность','Gross margin',(v.sales-v.cogs)/v.sales,'%'],['','Operating margin',v.ebit/v.sales,'%'],['','Profit margin',v.ni/v.sales,'%'],['','ROA',v.ni/v.ta,'%'],['','ROE',v.ni/v.eq,'%'],['','ROIC',nopat/(v.eq+debt),'%'],['','BEP',v.ebit/v.ta,'%'],
+   ['Рынок','EPS',eps,''],['','P/E',v.price/eps,'x'],['','P/B',v.price/(v.eq/v.sh),'x'],['Дюпон','PM × TATO × EM',(v.ni/v.sales)*(v.sales/v.ta)*(v.ta/v.eq),'%']];
+  $('#ratioRes').innerHTML='<table>'+rows.map(r=>`<tr><td style="color:var(--muted)">${r[0]}</td><td>${r[1]}</td><td class="mono"><b>${isFinite(r[2])?(r[3]==='%'?fmt(r[2]*100,2)+'%':fmt(r[2],2)+' '+r[3]):'—'}</b></td></tr>`).join('')+'</table>';
+}
+
+/* ===================== HOME CHECKLIST ===================== */
+function renderChecklist(){
+  const st=store.get('topicsDone',{});
+  $('#checklist').innerHTML=TOPICS.map(([k,t],i)=>`<label class="check"><input type="checkbox" data-k="${k}" ${st[k]?'checked':''}><span><b>${i+1}. ${t}</b> — <a href="#theory" onclick="setTimeout(()=>{const d=document.getElementById('th-${k}');d.open=true;d.scrollIntoView({behavior:'smooth'})},50)">теория</a> · <a href="#quiz" onclick="currentTopic='${k}';setTimeout(()=>{renderQuizFilter();renderQuiz('${k}',false)},10)">вопросы</a></span></label>`).join('');
+  $('#checklist').querySelectorAll('input').forEach(c=>c.onchange=()=>{const s=store.get('topicsDone',{});s[c.dataset.k]=c.checked;store.set('topicsDone',s);updProg()});
+  updProg();
+}
+function updProg(){const s=store.get('topicsDone',{});const n=TOPICS.filter(([k])=>s[k]).length;$('#progbar').style.width=(n/TOPICS.length*100)+'%';$('#progtxt').textContent=`Готово тем: ${n} из ${TOPICS.length}`}
+
+/* ===================== ROUTER ===================== */
+const VIEWS=['home','theory','formulas','glossary','cheatsheet','quiz','tasks','trainer','calc'];
+function route(){
+  const h=(location.hash||'#home').slice(1);const v=VIEWS.includes(h)?h:'home';
+  document.querySelectorAll('section.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));
+  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
+  setTimeout(()=>window.scrollTo(0,0),0);
+}
+window.addEventListener('hashchange',route);
+
+renderTheory();renderGloss();renderFormulas();renderCheat();renderQuizFilter();renderQuiz('all',false);renderTaskFilter();renderTasks();initTrainer();initRatios();renderChecklist();calcTVM();calcEAR();calcGrowth();calcAnn();calcRatios();route();
+</script>
+</body>
+</html>
